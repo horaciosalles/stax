@@ -1,19 +1,35 @@
-/* Two-zone portrait layout. Orientation lock for landscape. */
+/* Adaptive layout — portrait column, landscape side-by-side */
+
+#orientation-lock { display: none; }
 
 #app {
   display: flex;
   flex-direction: column;
   height: 100dvh;
-  max-inline-size: 390px;
+  max-inline-size: 430px;
   margin-inline: auto;
 }
 
 #stack-display {
-  flex: 0 0 44%;
-  background: var(--color-surface-1);
-  border-block-end: 1px solid var(--color-separator);
+  flex: 0 0 40%;
+  background: var(--color-glass-panel);
+  backdrop-filter: var(--blur-panel);
+  -webkit-backdrop-filter: var(--blur-panel);
+  border-block-end: 1px solid var(--color-glass-border);
+  box-shadow: var(--shadow-panel);
   position: relative;
   overflow: hidden;
+}
+
+/* Specular top edge on stack panel */
+#stack-display::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 1px;
+  background: var(--color-glass-shine);
+  pointer-events: none;
 }
 
 #keypad {
@@ -23,23 +39,39 @@
   gap: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
   padding-block-end: calc(var(--space-sm) + env(safe-area-inset-bottom));
-  background: var(--color-bg);
 }
 
-#orientation-lock {
-  display: none;
-}
-
+/* ── Landscape: side-by-side ── */
 @media (orientation: landscape) {
-  #app { display: none; }
-  #orientation-lock {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100dvh;
-    color: var(--color-text-secondary);
-    font-size: 1rem;
-    text-align: center;
-    padding: var(--space-lg);
+  #app {
+    flex-direction: row;
+    max-inline-size: 100%;
+  }
+
+  #stack-display {
+    flex: 0 0 36%;
+    border-block-end: none;
+    border-inline-end: 1px solid var(--color-glass-border);
+  }
+
+  #keypad {
+    padding-inline-end: calc(var(--space-sm) + env(safe-area-inset-right));
+    padding-inline-start: var(--space-sm);
+  }
+
+  /* Tighter keys in landscape */
+  .key {
+    min-block-size: 34px !important;
+  }
+
+  .key--func,
+  .key--stack-op,
+  .key--mem,
+  .key--action {
+    min-block-size: 28px !important;
+  }
+
+  .slider-row {
+    block-size: 26px !important;
   }
 }

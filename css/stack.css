@@ -4,18 +4,20 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: var(--space-md);
+  padding: var(--space-md) var(--space-md) calc(var(--space-md) + 4px);
 }
 
 #memory-indicator {
   position: absolute;
-  inset-block-start: 12px;
-  inset-inline-end: 12px;
-  font-size: 0.7rem;
+  inset-block-start: 14px;
+  inset-inline-end: 14px;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--color-accent-blue);
-  font-weight: 600;
+  font-weight: 700;
   opacity: 0;
-  transition: opacity 150ms;
+  transition: opacity 220ms ease;
 }
 
 #memory-indicator:not(:empty) {
@@ -25,7 +27,7 @@
 #stack-rows {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 5px;
 }
 
 .stack-row {
@@ -35,30 +37,33 @@
 }
 
 .stack-label {
-  inline-size: 28px;
-  font-size: 0.75rem;
+  inline-size: 34px;
+  font-size: 0.65rem;
   text-transform: uppercase;
+  letter-spacing: 0.10em;
   color: var(--color-text-tertiary);
   text-align: end;
   flex-shrink: 0;
+  font-weight: 700;
 }
 
 .stack-value {
   flex: 1;
   text-align: end;
   font-variant-numeric: tabular-nums;
-  padding-inline-end: var(--space-md);
+  padding-inline-end: var(--space-sm);
   color: var(--color-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  letter-spacing: -0.025em;
 }
 
 .stack-value--error  { color: var(--color-accent-red); }
 .stack-value--empty  { color: var(--color-text-tertiary); }
 .stack-value--input  { color: var(--color-text-primary); }
 
-/* X register largest, Y smaller, Z and above smallest */
-.stack-row:last-child  .stack-value { font-size: var(--font-stack-x); }
-.stack-row:nth-last-child(2) .stack-value { font-size: var(--font-stack-y); }
-.stack-row:nth-last-child(n+3) .stack-value { font-size: var(--font-stack-z); }
+/* X register: large, thin weight — like Apple's number displays */
+.stack-row:last-child            .stack-value { font-size: var(--font-stack-x); font-weight: 200; }
+.stack-row:nth-last-child(2)     .stack-value { font-size: var(--font-stack-y); font-weight: 300; }
+.stack-row:nth-last-child(n+3)   .stack-value { font-size: var(--font-stack-z); font-weight: 400; }

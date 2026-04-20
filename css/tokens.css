@@ -1,51 +1,86 @@
-/* CSS custom properties — all design tokens. M3 will fully populate this. */
+/* Design tokens — Liquid Glass edition */
 :root {
-  /* Colours — dark mode (default) */
-  --color-bg:            #000000;
-  --color-surface-1:     #1C1C1E;
-  --color-surface-2:     #2C2C2E;
-  --color-surface-3:     #3A3A3C;
-  --color-text-primary:  #FFFFFF;
-  --color-text-secondary:#8E8E93;
-  --color-text-tertiary: #48484A;
-  --color-accent-orange: #FF9F0A;
-  --color-accent-green:  #30D158;
+  /* Body gradient (used as background value in reset.css) */
+  --color-bg: linear-gradient(160deg, #0B0B18 0%, #18102A 50%, #0C1824 100%);
+
+  /* Glass surfaces */
+  --color-glass-panel:    rgba(18, 18, 38, 0.60);
+  --color-glass-key:      rgba(255, 255, 255, 0.09);
+  --color-glass-key-muted: rgba(255, 255, 255, 0.055);
+  --color-glass-border:   rgba(255, 255, 255, 0.10);
+  --color-glass-shine:    rgba(255, 255, 255, 0.16);
+
+  /* Text */
+  --color-text-primary:   #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.50);
+  --color-text-tertiary:  rgba(255, 255, 255, 0.22);
+  --color-separator:      rgba(255, 255, 255, 0.08);
+
+  /* Accents */
+  --color-accent-orange: #FF9500;
+  --color-accent-green:  #34C759;
   --color-accent-blue:   #0A84FF;
-  --color-accent-red:    #FF453A;
-  --color-separator:     rgba(84, 84, 88, 0.65);
+  --color-accent-red:    #FF3B30;
+
+  /* Key tints */
+  --color-key-operator: rgba(255, 149,  0, 0.78);
+  --color-key-enter:    rgba( 52, 199, 89, 0.82);
 
   /* Spacing */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 40px;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 18px;
+  --space-lg: 28px;
+  --space-xl: 44px;
 
-  /* Border radius */
-  --radius-key:    12px;
-  --radius-drawer: 16px;
-  --radius-handle: 0 10px 10px 0;
+  /* Radius */
+  --radius-key:    16px;
+  --radius-panel:  28px;
+  --radius-drawer: 22px;
+  --radius-handle: 0 14px 14px 0;
 
-  /* Typography */
-  --font-family:    system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-  --font-stack-x:   2.5rem;
-  --font-stack-y:   1.75rem;
-  --font-stack-z:   1.25rem;
-  --font-key-digit: 1.3rem;
-  --font-key-op:    1.3rem;
-  --font-key-func:  0.8rem;
-  --font-key-enter: 1rem;
+  /* Blur */
+  --blur-panel: blur(28px) saturate(160%);
+  --blur-key:   blur(6px);
+
+  /* Shadows */
+  --shadow-key:       0 2px 8px rgba(0,0,0,0.50),
+                      inset 0 1px 0 rgba(255,255,255,0.16),
+                      inset 0 -1px 0 rgba(0,0,0,0.28);
+  --shadow-key-press: 0 1px 3px rgba(0,0,0,0.55),
+                      inset 0 2px 5px rgba(0,0,0,0.42);
+  --shadow-panel:     0 12px 48px rgba(0,0,0,0.55),
+                      0 2px 8px rgba(0,0,0,0.30);
+
+  /* Typography — system SF/Helvetica stack */
+  --font-family:    -apple-system, 'SF Pro Display', system-ui, 'Helvetica Neue', sans-serif;
+  --font-stack-x:   clamp(2rem,   8dvh, 3.2rem);
+  --font-stack-y:   clamp(1.4rem, 5dvh, 2rem);
+  --font-stack-z:   clamp(1rem,   3.5dvh, 1.4rem);
+  --font-key-digit: clamp(1rem,   3dvh, 1.35rem);
+  --font-key-op:    clamp(1rem,   3dvh, 1.35rem);
+  --font-key-func:  clamp(0.6rem, 1.8dvh, 0.8rem);
+  --font-key-enter: clamp(0.8rem, 2.2dvh, 1rem);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-bg:            #F2F2F7;
-    --color-surface-1:     #FFFFFF;
-    --color-surface-2:     #E5E5EA;
-    --color-surface-3:     #D1D1D6;
-    --color-text-primary:  #000000;
-    --color-text-secondary:#6C6C70;
-    --color-text-tertiary: #AEAEB2;
-    --color-separator:     rgba(60, 60, 67, 0.29);
+    --color-bg: linear-gradient(160deg, #E2E2F0 0%, #F0EAF8 50%, #E5EEF8 100%);
+    --color-glass-panel:     rgba(255, 255, 255, 0.58);
+    --color-glass-key:       rgba(255, 255, 255, 0.72);
+    --color-glass-key-muted: rgba(240, 240, 255, 0.60);
+    --color-glass-border:    rgba(0, 0, 0, 0.07);
+    --color-glass-shine:     rgba(255, 255, 255, 0.92);
+    --color-text-primary:    #1C1C1E;
+    --color-text-secondary:  rgba(60, 60, 67, 0.58);
+    --color-text-tertiary:   rgba(60, 60, 67, 0.28);
+    --color-separator:       rgba(60, 60, 67, 0.10);
+    --shadow-key:       0 2px 8px rgba(0,0,0,0.10),
+                        inset 0 1px 0 rgba(255,255,255,0.95),
+                        inset 0 -1px 0 rgba(0,0,0,0.05);
+    --shadow-key-press: 0 1px 2px rgba(0,0,0,0.14),
+                        inset 0 2px 4px rgba(0,0,0,0.09);
+    --shadow-panel:     0 8px 32px rgba(0,0,0,0.10),
+                        0 2px 8px rgba(0,0,0,0.06);
   }
 }

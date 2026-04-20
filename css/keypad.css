@@ -1,4 +1,4 @@
-/* Key grid and button variants */
+/* Key grid and Liquid Glass button variants */
 
 .key-row {
   display: grid;
@@ -16,77 +16,122 @@
   grid-template-columns: 1fr 3fr;
 }
 
+/* ── Base key — glass tile ── */
 .key {
   border-radius: var(--radius-key);
+  font-family: var(--font-family);
   font-size: var(--font-key-digit);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-text-primary);
-  background: var(--color-surface-3);
+  /* glass: white gradient overlay on top of base tint */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.00) 50%
+    ),
+    var(--color-glass-key);
+  backdrop-filter: var(--blur-key);
+  -webkit-backdrop-filter: var(--blur-key);
+  border: 1px solid var(--color-glass-border);
   min-block-size: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: transform 120ms ease-in, box-shadow 120ms ease-in;
+  box-shadow: var(--shadow-key);
+  transition:
+    transform 130ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 130ms ease,
+    filter 80ms ease;
   user-select: none;
 }
 
 .key:active {
-  transform: scale(0.94);
-  box-shadow: none;
-  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+  transform: scale(0.91);
+  box-shadow: var(--shadow-key-press);
+  filter: brightness(0.85);
+  transition:
+    transform 55ms ease-out,
+    box-shadow 55ms ease-out,
+    filter 55ms ease-out;
 }
 
-.key:hover {
-  filter: brightness(1.1);
+.key:hover:not(:active) {
+  filter: brightness(1.18);
 }
 
 .key:disabled {
-  opacity: 0.35;
+  opacity: 0.32;
   cursor: default;
 }
 
-/* Variants */
-.key--func {
-  background: var(--color-surface-2);
-  color: var(--color-text-secondary);
+/* ── Muted keys: func / stack-op / action ── */
+.key--func,
+.key--stack-op,
+.key--action {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.00) 50%
+    ),
+    var(--color-glass-key-muted);
   font-size: var(--font-key-func);
-  font-weight: 500;
-}
-
-.key--stack-op {
-  background: var(--color-surface-2);
+  font-weight: 600;
+  letter-spacing: 0.04em;
   color: var(--color-text-secondary);
 }
 
-.key--clr {
-  color: var(--color-accent-red);
-}
+/* ── Stack op overrides ── */
+.key--clr  { color: var(--color-accent-red); }
 
+/* ── Memory keys ── */
 .key--mem {
-  background: var(--color-surface-2);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.00) 50%
+    ),
+    var(--color-glass-key-muted);
+  font-size: var(--font-key-func);
+  font-weight: 600;
+  letter-spacing: 0.04em;
   color: var(--color-accent-blue);
 }
 
+/* ── Operator keys — vivid orange glass ── */
 .key--operator {
-  background: var(--color-accent-orange);
-  color: #000000;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.00) 45%
+    ),
+    var(--color-key-operator);
+  border-color: rgba(255, 149, 0, 0.35);
+  color: #FFFFFF;
   font-size: var(--font-key-op);
-  font-weight: 500;
-}
-
-.key--enter {
-  background: var(--color-accent-green);
-  color: #000000;
-  font-size: var(--font-key-enter);
   font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.30);
 }
 
-.key--copy-success {
-  color: var(--color-accent-green);
+/* ── Enter key — vivid green glass ── */
+.key--enter {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.00) 45%
+    ),
+    var(--color-key-enter);
+  border-color: rgba(52, 199, 89, 0.35);
+  color: #FFFFFF;
+  font-size: var(--font-key-enter);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
-.key--action {
-  background: var(--color-surface-2);
-  color: var(--color-text-secondary);
-}
+/* ── COPY success flash ── */
+.key--copy-success { color: var(--color-accent-green); }

@@ -4,27 +4,38 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  block-size: 36px;
+  block-size: 34px;
   padding-inline: var(--space-sm);
   flex: 0 0 auto;
 }
 
 .slider-label {
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--color-text-tertiary);
+  font-weight: 700;
   flex-shrink: 0;
 }
 
 #sig-slider {
   flex: 1;
   accent-color: var(--color-accent-orange);
+  opacity: 0.55;
+  transition: opacity 150ms ease;
+}
+
+#sig-slider:hover,
+#sig-slider:focus-visible {
+  opacity: 1;
 }
 
 #sig-value {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--color-text-secondary);
-  inline-size: 1.5ch;
+  inline-size: 1.6ch;
   text-align: end;
   flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
 }
