@@ -1,0 +1,30 @@
+/* Significant-digits slider */
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  block-size: 36px;
+  padding-inline: var(--space-sm);
+  flex: 0 0 auto;
+}
+
+.slider-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+#sig-slider {
+  flex: 1;
+  accent-color: var(--color-accent-orange);
+}
+
+#sig-value {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  inline-size: 1.5ch;
+  text-align: end;
+  flex-shrink: 0;
+}

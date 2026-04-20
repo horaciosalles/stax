@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="The RPN calculator with taste.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Stax</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/stack.css">
+  <link rel="stylesheet" href="css/keypad.css">
+  <link rel="stylesheet" href="css/history.css">
+  <link rel="stylesheet" href="css/slider.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Orientation lock overlay (landscape only, via CSS) -->
+  <div id="orientation-lock" aria-live="polite">
+    Rotate your device to use Stax.
+  </div>
+
+  <div id="app">
+
+    <!-- Zone 1: Stack Display -->
+    <section id="stack-display" aria-label="Stack display" aria-live="polite">
+      <span id="memory-indicator" aria-label="Memory active"></span>
+      <div id="stack-rows"></div>
+    </section>
+
+    <!-- Zone 2: Keypad -->
+    <section id="keypad" aria-label="Calculator keypad">
+
+      <!-- Sig-digits slider row -->
+      <div class="slider-row">
+        <span class="slider-label">SIG</span>
+        <input id="sig-slider" type="range" min="2" max="12" value="8" step="1" aria-label="Significant digits">
+        <span id="sig-value">8</span>
+      </div>
+
+      <!-- Function key row: √ yˣ % ± 1/x -->
+      <div class="key-row key-row--func">
+        <button class="key key--func" data-key="sqrt"       aria-label="Square root">\u221A</button>
+        <button class="key key--func" data-key="pow"        aria-label="Y to the power X">y\u02E3</button>
+        <button class="key key--func" data-key="percent"    aria-label="Percent">%</button>
+        <button class="key key--func" data-key="sign"       aria-label="Change sign">\u00B1</button>
+        <button class="key key--func" data-key="reciprocal" aria-label="1 divided by X">1/x</button>
+      </div>
+
+      <!-- Stack ops row: CLR SWAP ROT CLX -->
+      <div class="key-row key-row--ops">
+        <button class="key key--stack-op key--clr"  data-key="clr"  aria-label="Clear stack">CLR</button>
+        <button class="key key--stack-op"           data-key="swap" aria-label="Swap X and Y">SWAP</button>
+        <button class="key key--stack-op"           data-key="rot"  aria-label="Roll stack">ROT</button>
+        <button class="key key--stack-op"           data-key="clx"  aria-label="Clear X">CLX</button>
+      </div>
+
+      <!-- Memory row: STO RCL M+ M− -->
+      <div class="key-row key-row--mem">
+        <button class="key key--mem" data-key="sto"    aria-label="Store to memory">STO</button>
+        <button class="key key--mem" data-key="rcl"    aria-label="Recall from memory">RCL</button>
+        <button class="key key--mem" data-key="mplus"  aria-label="Add to memory">M+</button>
+        <button class="key key--mem" data-key="mminus" aria-label="Subtract from memory">M\u2212</button>
+      </div>
+
+      <!-- Number rows -->
+      <div class="key-row">
+        <button class="key key--digit" data-key="digit-7" aria-label="7">7</button>
+        <button class="key key--digit" data-key="digit-8" aria-label="8">8</button>
+        <button class="key key--digit" data-key="digit-9" aria-label="9">9</button>
+        <button class="key key--operator" data-key="divide" aria-label="Divide">\u00F7</button>
+      </div>
+      <div class="key-row">
+        <button class="key key--digit" data-key="digit-4" aria-label="4">4</button>
+        <button class="key key--digit" data-key="digit-5" aria-label="5">5</button>
+        <button class="key key--digit" data-key="digit-6" aria-label="6">6</button>
+        <button class="key key--operator" data-key="multiply" aria-label="Multiply">\u00D7</button>
+      </div>
+      <div class="key-row">
+        <button class="key key--digit" data-key="digit-1" aria-label="1">1</button>
+        <button class="key key--digit" data-key="digit-2" aria-label="2">2</button>
+        <button class="key key--digit" data-key="digit-3" aria-label="3">3</button>
+        <button class="key key--operator" data-key="minus" aria-label="Subtract">\u2212</button>
+      </div>
+      <div class="key-row">
+        <button class="key key--digit" data-key="digit-0" aria-label="0">0</button>
+        <button class="key key--digit" data-key="decimal" aria-label="Decimal point">.</button>
+        <button class="key key--stack-op" data-key="undo" aria-label="Undo">UNDO</button>
+        <button class="key key--operator" data-key="plus" aria-label="Add">+</button>
+      </div>
+
+      <!-- Action row: COPY + ENTER (3 cols) -->
+      <div class="key-row key-row--action">
+        <button class="key key--action" data-key="copy"  aria-label="Copy result">COPY</button>
+        <button class="key key--enter"  data-key="enter" aria-label="Enter">ENTER</button>
+      </div>
+
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

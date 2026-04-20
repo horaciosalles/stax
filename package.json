@@ -1,0 +1,17 @@
+{
+  "name": "stax",
+  "version": "0.1.0",
+  "description": "The RPN calculator with taste.",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "lint": "eslint js/**/*.js"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.0",
+    "eslint": "^8.57.0",
+    "vitest": "^2.1.0"
+  }
+}

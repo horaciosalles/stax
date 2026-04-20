@@ -1,0 +1,51 @@
+/* CSS custom properties — all design tokens. M3 will fully populate this. */
+:root {
+  /* Colours — dark mode (default) */
+  --color-bg:            #000000;
+  --color-surface-1:     #1C1C1E;
+  --color-surface-2:     #2C2C2E;
+  --color-surface-3:     #3A3A3C;
+  --color-text-primary:  #FFFFFF;
+  --color-text-secondary:#8E8E93;
+  --color-text-tertiary: #48484A;
+  --color-accent-orange: #FF9F0A;
+  --color-accent-green:  #30D158;
+  --color-accent-blue:   #0A84FF;
+  --color-accent-red:    #FF453A;
+  --color-separator:     rgba(84, 84, 88, 0.65);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+
+  /* Border radius */
+  --radius-key:    12px;
+  --radius-drawer: 16px;
+  --radius-handle: 0 10px 10px 0;
+
+  /* Typography */
+  --font-family:    system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-stack-x:   2.5rem;
+  --font-stack-y:   1.75rem;
+  --font-stack-z:   1.25rem;
+  --font-key-digit: 1.3rem;
+  --font-key-op:    1.3rem;
+  --font-key-func:  0.8rem;
+  --font-key-enter: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg:            #F2F2F7;
+    --color-surface-1:     #FFFFFF;
+    --color-surface-2:     #E5E5EA;
+    --color-surface-3:     #D1D1D6;
+    --color-text-primary:  #000000;
+    --color-text-secondary:#6C6C70;
+    --color-text-tertiary: #AEAEB2;
+    --color-separator:     rgba(60, 60, 67, 0.29);
+  }
+}

@@ -1,0 +1,64 @@
+/* Stack display component */
+
+#stack-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-md);
+}
+
+#memory-indicator {
+  position: absolute;
+  inset-block-start: 12px;
+  inset-inline-end: 12px;
+  font-size: 0.7rem;
+  color: var(--color-accent-blue);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 150ms;
+}
+
+#memory-indicator:not(:empty) {
+  opacity: 1;
+}
+
+#stack-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stack-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.stack-label {
+  inline-size: 28px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  text-align: end;
+  flex-shrink: 0;
+}
+
+.stack-value {
+  flex: 1;
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  padding-inline-end: var(--space-md);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stack-value--error  { color: var(--color-accent-red); }
+.stack-value--empty  { color: var(--color-text-tertiary); }
+.stack-value--input  { color: var(--color-text-primary); }
+
+/* X register largest, Y smaller, Z and above smallest */
+.stack-row:last-child  .stack-value { font-size: var(--font-stack-x); }
+.stack-row:nth-last-child(2) .stack-value { font-size: var(--font-stack-y); }
+.stack-row:nth-last-child(n+3) .stack-value { font-size: var(--font-stack-z); }
