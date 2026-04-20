@@ -5,10 +5,29 @@
   50%, 100%  { opacity: 0; }
 }
 
+@keyframes stack-row-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes error-flash {
+  0%   { background-color: transparent; }
+  35%  { background-color: rgba(255, 69, 58, 0.22); }
+  100% { background-color: transparent; }
+}
+
 .cursor {
   animation: cursor-blink 1.06s step-end infinite;
   color: var(--color-text-secondary);
   padding-inline-start: 1px;
+}
+
+.stack-row--enter {
+  animation: stack-row-enter 120ms ease-out both;
+}
+
+.stack-value--error {
+  animation: error-flash 200ms ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -21,6 +40,14 @@
   .cursor {
     animation: none;
     opacity: 1;
+  }
+
+  .stack-row--enter {
+    animation: none;
+  }
+
+  .stack-value--error {
+    animation: none;
   }
 
   #drawer-handle {

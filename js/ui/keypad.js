@@ -11,10 +11,11 @@ function handleResult(result) {
   if (result && result.error) {
     setError(result.error);
     vibrate([10, 30, 10, 30, 10]);
+    renderStack(_engine);
   } else {
     clearError();
+    renderStack(_engine, { pushAnimation: true });
   }
-  renderStack(_engine);
 }
 
 function handleKey(key) {
@@ -41,7 +42,7 @@ function handleKey(key) {
 
   case 'enter':
     _engine.enter();
-    renderStack(_engine);
+    renderStack(_engine, { pushAnimation: true });
     vibrate(20);
     break;
 
@@ -107,8 +108,16 @@ function handleKey(key) {
     const text = formatNumber(xVal, _engine.sigDigits);
     const copyBtn = document.querySelector('[data-key="copy"]');
     navigator.clipboard.writeText(text).then(() => {
-      if (copyBtn) copyBtn.textContent = STRINGS['key.copy_success'];
-      setTimeout(() => { if (copyBtn) copyBtn.textContent = STRINGS['key.copy']; }, 1500);
+      if (copyBtn) {
+        copyBtn.textContent = STRINGS['key.copy_success'];
+        copyBtn.classList.add('key--copy-success');
+        setTimeout(() => {
+          if (copyBtn) {
+            copyBtn.textContent = STRINGS['key.copy'];
+            copyBtn.classList.remove('key--copy-success');
+          }
+        }, 1500);
+      }
     }).catch(() => {
       if (copyBtn) copyBtn.textContent = STRINGS['key.copy_fail'];
       setTimeout(() => { if (copyBtn) copyBtn.textContent = STRINGS['key.copy']; }, 1500);

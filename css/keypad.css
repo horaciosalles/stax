@@ -27,13 +27,14 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+  transition: transform 120ms ease-in, box-shadow 120ms ease-in;
   user-select: none;
 }
 
 .key:active {
   transform: scale(0.94);
   box-shadow: none;
+  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
 }
 
 .key:hover {
@@ -79,6 +80,10 @@
   color: #000000;
   font-size: var(--font-key-enter);
   font-weight: 600;
+}
+
+.key--copy-success {
+  color: var(--color-accent-green);
 }
 
 .key--action {

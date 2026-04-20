@@ -13,7 +13,7 @@ export function clearError() {
 }
 
 /** Full re-render of the stack display from engine state. */
-export function renderStack(engine) {
+export function renderStack(engine, { pushAnimation = false } = {}) {
   const container = document.getElementById('stack-rows');
   if (!container) return;
   container.textContent = '';
@@ -48,7 +48,7 @@ export function renderStack(engine) {
 
   for (const row of rows) {
     const div = document.createElement('div');
-    div.className = 'stack-row';
+    div.className = 'stack-row' + (pushAnimation ? ' stack-row--enter' : '');
 
     const labelEl = document.createElement('span');
     labelEl.className = 'stack-label';
