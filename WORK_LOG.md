@@ -1,12 +1,15 @@
 # WORK LOG — Stax
-Current milestone: M2 — First Playable: All Features Wired, PWA Installable
-Last session: 2026-04-19
-Status: M1 COMPLETE and pushed to GitHub (horaciosalles/stax). Starting M2 next session.
+Current milestone: M3 — Polish & Accessibility
+Last session: 2026-04-20
+Status: M2 COMPLETE. Live at https://horaciosalles.github.io/stax/
 
 ## ACTIVE CHECKPOINT
 none
 
 ## SESSION HISTORY (last 3)
+2026-04-20 — M2 complete. History drawer (slide-in, touch drag, overlay), cursor blink
+             animation, CI/CD pipeline (lint→test→deploy via peaceiris/actions-gh-pages),
+             GitHub Pages now serving from gh-pages branch. Commits: c8d7abb, 8e8748f, d1a108d.
 2026-04-19 — M1 complete. 100/100 tests, 98.64% coverage, ESLint zero errors.
              Architecture decisions: history.js merged into rpn.js; Unicode superscripts
              for scientific notation. Repo live at github.com/horaciosalles/stax.
