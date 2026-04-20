@@ -2,7 +2,7 @@
   "name": "Stax",
   "short_name": "Stax",
   "description": "The RPN calculator with taste.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#000000",

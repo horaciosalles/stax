@@ -1,1 +1,117 @@
-/* History drawer — M2 implementation */
+/* History drawer */
+
+#drawer {
+  position: fixed;
+  top: 44dvh;
+  bottom: 0;
+  left: 0;
+  width: calc(min(320px, 80vw) + 32px);
+  display: flex;
+  flex-direction: row;
+  transform: translateX(calc(-100% + 32px));
+  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+
+#drawer.drawer--open {
+  transform: translateX(0);
+}
+
+#drawer-body {
+  flex: 1;
+  background: var(--color-surface-1);
+  border-radius: 0 var(--radius-drawer) 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-inline-size: 0;
+}
+
+#drawer-header {
+  padding: var(--space-md);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  border-block-end: 1px solid var(--color-separator);
+  flex-shrink: 0;
+}
+
+#drawer-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-block: var(--space-xs);
+}
+
+#drawer-handle {
+  inline-size: 32px;
+  block-size: 180px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-handle);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+  animation: handle-pulse 800ms ease-in-out infinite alternate;
+}
+
+#drawer-handle:active {
+  background: var(--color-surface-3);
+}
+
+@keyframes handle-pulse {
+  from { box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2); }
+  to   { box-shadow: 2px 0 12px rgba(0, 0, 0, 0.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #drawer-handle { animation: none; }
+}
+
+#drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  display: none;
+}
+
+#drawer-overlay.overlay--visible {
+  display: block;
+}
+
+/* History entries */
+
+.drawer-entry {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.drawer-entry__expr {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-block-end: 2px;
+}
+
+.drawer-entry__result {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.drawer-sep {
+  border: none;
+  border-block-end: 1px solid var(--color-separator);
+  margin-inline: var(--space-md);
+}
+
+.drawer-empty {
+  padding: var(--space-md);
+  color: var(--color-text-tertiary);
+  font-size: 0.9rem;
+  text-align: center;
+}

@@ -24,13 +24,12 @@ export function renderStack(engine) {
   const rows = [];
 
   if (engine.isInputting) {
-    // Stack items shift up: top of stack becomes Y, etc.
     for (let i = 0; i < engine.stack.length; i++) {
       const depth = engine.stack.length - i; // 1 = Y, 2 = Z, 3+ = unlabelled
       const label = depth === 1 ? 'y' : depth === 2 ? 'z' : '';
       rows.push({ label, text: formatNumber(engine.stack[i], engine.sigDigits) });
     }
-    rows.push({ label: 'x', text: engine.inputBuffer + '|', isInput: true });
+    rows.push({ label: 'x', text: engine.inputBuffer, isInput: true, hasCursor: true });
   } else if (engine.stack.length > 0) {
     for (let i = 0; i < engine.stack.length; i++) {
       const depth = engine.stack.length - 1 - i; // 0 = X, 1 = Y, 2 = Z
@@ -41,10 +40,10 @@ export function renderStack(engine) {
     rows.push({ label: 'x', text: '0', isEmpty: true });
   }
 
-  // Override X row with error if one is set
   if (_errorText) {
     rows[rows.length - 1].text = _errorText;
     rows[rows.length - 1].isError = true;
+    rows[rows.length - 1].hasCursor = false;
   }
 
   for (const row of rows) {
@@ -64,6 +63,15 @@ export function renderStack(engine) {
 
     div.appendChild(labelEl);
     div.appendChild(valueEl);
+
+    if (row.hasCursor) {
+      const cursorEl = document.createElement('span');
+      cursorEl.className = 'cursor';
+      cursorEl.textContent = '|';
+      cursorEl.setAttribute('aria-hidden', 'true');
+      div.appendChild(cursorEl);
+    }
+
     container.appendChild(div);
   }
 }
