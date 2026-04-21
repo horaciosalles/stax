@@ -6,6 +6,14 @@ Status: M2 COMPLETE. Live at https://horaciosalles.github.io/stax/
 ## ACTIVE CHECKPOINT
 none
 
+## M3 PROGRESS
+- [x] Liquid Glass redesign (gradient bg, glass surfaces, landscape layout)
+- [x] Portrait layout: full-width, stack height reduced to 30%
+- [x] Focus ring: 2px orange outline on :focus-visible (WCAG AA, B.12)
+- [x] CLR "Sure?" red-pulse animation + key--clr-pending CSS class
+- [ ] WCAG AA contrast audit (all text/bg combos verified)
+- [ ] Lighthouse score ≥ 90
+
 ## SESSION HISTORY (last 3)
 2026-04-20 — M2 complete. History drawer (slide-in, touch drag, overlay), cursor blink
              animation, CI/CD pipeline (lint→test→deploy via peaceiris/actions-gh-pages),

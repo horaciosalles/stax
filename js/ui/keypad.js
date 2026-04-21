@@ -66,17 +66,17 @@ function handleKey(key) {
     if (_clrPending) {
       clearTimeout(_clrTimer);
       _clrPending = false;
-      if (btn) btn.textContent = STRINGS['key.clr'];
+      if (btn) { btn.textContent = STRINGS['key.clr']; btn.classList.remove('key--clr-pending'); }
       _engine.clr();
       clearError();
       renderStack(_engine);
       vibrate([10, 50, 10]);
     } else {
       _clrPending = true;
-      if (btn) btn.textContent = STRINGS['key.clr_confirm'];
+      if (btn) { btn.textContent = STRINGS['key.clr_confirm']; btn.classList.add('key--clr-pending'); }
       _clrTimer = setTimeout(() => {
         _clrPending = false;
-        if (btn) btn.textContent = STRINGS['key.clr'];
+        if (btn) { btn.textContent = STRINGS['key.clr']; btn.classList.remove('key--clr-pending'); }
       }, 2000);
       vibrate(10);
     }

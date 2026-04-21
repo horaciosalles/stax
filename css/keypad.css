@@ -135,3 +135,20 @@
 
 /* ── COPY success flash ── */
 .key--copy-success { color: var(--color-accent-green); }
+
+/* ── Focus ring (keyboard / switch access) — WCAG AA ── */
+.key:focus-visible {
+  outline: 2px solid var(--color-accent-orange);
+  outline-offset: 2px;
+}
+
+/* ── CLR pending state — pulsing red border ── */
+@keyframes clr-pulse {
+  0%, 100% { border-color: rgba(255, 59, 48, 0.40); box-shadow: var(--shadow-key); }
+  50%       { border-color: rgba(255, 59, 48, 0.90); box-shadow: var(--shadow-key), 0 0 10px rgba(255, 59, 48, 0.45); }
+}
+
+.key--clr-pending {
+  color: var(--color-accent-red) !important;
+  animation: clr-pulse 600ms ease-in-out infinite;
+}
