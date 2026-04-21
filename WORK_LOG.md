@@ -1,7 +1,7 @@
 # WORK LOG — Stax
 Current milestone: M3 — Polish & Accessibility
 Last session: 2026-04-20
-Status: M3 IN PROGRESS
+Status: M3 COMPLETE ✓ | M4 IN PROGRESS
 
 ## ACTIVE CHECKPOINT
 none
@@ -20,8 +20,9 @@ none
 - [x] Stack underflow: silent no-op (no error displayed to user)
 - [x] PWA icons generated (192px + 512px + maskable, pure Node.js); apple-touch-icon added
 - [x] Backspace key added (⌫, action row); engine backspace() method; keyboard Backspace shortcut; 4 new tests (104 total)
-- [ ] WCAG AA contrast audit (verify all text/bg combos with contrast tool)
-- [ ] Lighthouse score ≥ 90 (target for M3 exit)
+- [x] WCAG AA contrast audit: 4 failures fixed (dark tertiary 2→4.5:1, enter font large-text, light secondary+tertiary solid colors)
+- [x] Lighthouse (local): Performance 100, Accessibility 100, Best-Practices 96 (FCP 1.2s, LCP 1.4s, TBT 0ms, CLS 0)
+- [x] 3 ARIA violations fixed: landmark-one-main, aria-prohibited-attr, aria-hidden-focus (inert on drawer-body)
 
 ## M4 PROGRESS (Alpha — feature complete)
 - [ ] All D-section acceptance criteria verified
