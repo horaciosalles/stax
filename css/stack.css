@@ -38,9 +38,9 @@
 
 .stack-label {
   inline-size: 34px;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.08em;
   color: var(--color-text-tertiary);
   text-align: end;
   flex-shrink: 0;

@@ -17,7 +17,8 @@
   border-block-end: 1px solid var(--color-glass-border);
   box-shadow: var(--shadow-panel);
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Specular top edge on stack panel */
@@ -58,9 +59,11 @@
     padding-inline-start: var(--space-sm);
   }
 
-  /* Tighter keys in landscape */
+  /* Tighter keys + smaller fonts in landscape */
   .key {
     min-block-size: 34px !important;
+    --font-key-digit: 1rem;
+    --font-key-op:    1rem;
   }
 
   .key--func,
@@ -68,6 +71,11 @@
   .key--mem,
   .key--action {
     min-block-size: 28px !important;
+    --font-key-func:  0.7rem;
+  }
+
+  .key--enter {
+    --font-key-enter: 0.8rem;
   }
 
   .slider-row {

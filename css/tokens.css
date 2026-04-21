@@ -54,13 +54,13 @@
 
   /* Typography — system SF/Helvetica stack */
   --font-family:    -apple-system, 'SF Pro Display', system-ui, 'Helvetica Neue', sans-serif;
-  --font-stack-x:   clamp(2rem,   8dvh, 3.2rem);
-  --font-stack-y:   clamp(1.4rem, 5dvh, 2rem);
-  --font-stack-z:   clamp(1rem,   3.5dvh, 1.4rem);
-  --font-key-digit: clamp(1rem,   3dvh, 1.35rem);
-  --font-key-op:    clamp(1rem,   3dvh, 1.35rem);
-  --font-key-func:  clamp(0.6rem, 1.8dvh, 0.8rem);
-  --font-key-enter: clamp(0.8rem, 2.2dvh, 1rem);
+  --font-stack-x:   2.8rem;
+  --font-stack-y:   1.8rem;
+  --font-stack-z:   1.25rem;
+  --font-key-digit: 1.25rem;
+  --font-key-op:    1.25rem;
+  --font-key-func:  0.85rem;
+  --font-key-enter: 0.95rem;
 }
 
 @media (prefers-color-scheme: light) {

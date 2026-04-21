@@ -9,6 +9,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Stax</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -94,10 +95,11 @@
         <button class="key key--operator" data-key="plus" aria-label="Add">+</button>
       </div>
 
-      <!-- Action row: COPY + ENTER (3 cols) -->
+      <!-- Action row: COPY + ← + ENTER -->
       <div class="key-row key-row--action">
-        <button class="key key--action" data-key="copy"  aria-label="Copy result">COPY</button>
-        <button class="key key--enter"  data-key="enter" aria-label="Enter">ENTER</button>
+        <button class="key key--action" data-key="copy"      aria-label="Copy result">COPY</button>
+        <button class="key key--action" data-key="backspace" aria-label="Backspace">⌫</button>
+        <button class="key key--enter"  data-key="enter"     aria-label="Enter">ENTER</button>
       </div>
 
     </section>

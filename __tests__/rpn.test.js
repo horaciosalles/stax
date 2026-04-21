@@ -332,6 +332,35 @@ describe('rot()', () => {
   });
 });
 
+describe('backspace()', () => {
+  it('removes last digit from input buffer', () => {
+    e.digit(1); e.digit(2); e.digit(3);
+    e.backspace();
+    expect(e.inputBuffer).toBe('12');
+    expect(e.isInputting).toBe(true);
+  });
+
+  it('clears buffer and exits input mode when only one char remains', () => {
+    e.digit(7);
+    e.backspace();
+    expect(e.inputBuffer).toBe('');
+    expect(e.isInputting).toBe(false);
+  });
+
+  it('does nothing when not inputting', () => {
+    push(e, 5);
+    e.backspace();
+    expect(e.stack).toEqual([5]);
+    expect(e.isInputting).toBe(false);
+  });
+
+  it('handles decimal point correctly', () => {
+    e.digit(3); e.decimal(); e.digit(1); e.digit(4);
+    e.backspace();
+    expect(e.inputBuffer).toBe('3.1');
+  });
+});
+
 describe('clx()', () => {
   it('clears input buffer when inputting', () => {
     e.digit(5); e.clx();

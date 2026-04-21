@@ -15,8 +15,17 @@ none
 - [x] Service worker bumped to stax-v2 (cache bust after redesign)
 - [x] CI/CD migrated from peaceiris/gh-pages to actions/deploy-pages; gh-pages branch deleted
 - [x] manifest.json: orientation=any, theme-color=#0B0B18
+- [x] Scrollable stack display (overflow-y: auto)
+- [x] Font sizes increased: key labels 1.25rem, func 0.85rem, stack labels 0.8rem
+- [x] Stack underflow: silent no-op (no error displayed to user)
+- [x] PWA icons generated (192px + 512px + maskable, pure Node.js); apple-touch-icon added
+- [x] Backspace key added (⌫, action row); engine backspace() method; keyboard Backspace shortcut; 4 new tests (104 total)
 - [ ] WCAG AA contrast audit (verify all text/bg combos with contrast tool)
 - [ ] Lighthouse score ≥ 90 (target for M3 exit)
+
+## M4 PROGRESS (Alpha — feature complete)
+- [ ] All D-section acceptance criteria verified
+- [ ] No P0 bugs open; P1 bugs documented
 
 M3 exit criteria (from blueprint §L.2 — "Vertical Slice"):
   Figma designs fully implemented ✓ | Lighthouse ≥ 90 pending | History drawer gesture ✓ | 0 P0/P1 bugs ✓

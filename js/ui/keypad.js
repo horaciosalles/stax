@@ -9,6 +9,7 @@ let _clrTimer = null;
 
 function handleResult(result) {
   if (result && result.error) {
+    if (result.error === 'Error: Stack underflow') return;
     setError(result.error);
     vibrate([10, 30, 10, 30, 10]);
     renderStack(_engine);
@@ -59,7 +60,8 @@ function handleKey(key) {
 
   case 'swap': handleResult(_engine.swap()); vibrate(10); break;
   case 'rot':  handleResult(_engine.rot());  vibrate(10); break;
-  case 'clx':  handleResult(_engine.clx());  vibrate(10); break;
+  case 'clx':      handleResult(_engine.clx());      vibrate(10); break;
+  case 'backspace': _engine.backspace(); renderStack(_engine); vibrate(10); break;
 
   case 'clr': {
     const btn = document.querySelector('[data-key="clr"]');
@@ -142,7 +144,8 @@ function onKeydown(event) {
     }
     return;
   }
-  if (event.key === 'Escape') { handleKey('clx'); return; }
+  if (event.key === 'Escape')     { handleKey('clx');       return; }
+  if (event.key === 'Backspace')  { handleKey('backspace'); return; }
   if (event.key === 'Enter') { handleKey('enter'); return; }
   if (event.key === '.') { handleKey('decimal'); return; }
   if (event.key === '+') { handleKey('plus'); return; }

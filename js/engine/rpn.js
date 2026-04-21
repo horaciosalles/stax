@@ -228,6 +228,17 @@ export class RpnEngine {
     return null;
   }
 
+  /** Remove last digit from input buffer. No-op if not inputting. */
+  backspace() {
+    if (!this.isInputting) return;
+    if (this.inputBuffer.length <= 1) {
+      this.inputBuffer = '';
+      this.isInputting = false;
+    } else {
+      this.inputBuffer = this.inputBuffer.slice(0, -1);
+    }
+  }
+
   /** Clear X register (clear input buffer if inputting, otherwise pop stack). */
   clx() {
     if (this.isInputting) {
