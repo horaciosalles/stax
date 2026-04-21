@@ -21,16 +21,14 @@
 </head>
 <body>
 
-  <!-- Orientation lock overlay (landscape only, via CSS) -->
-  <div id="orientation-lock" aria-live="polite">
-    Rotate your device to use Stax.
-  </div>
+  <!-- Orientation lock (always hidden — landscape now supported) -->
+  <div id="orientation-lock" aria-hidden="true"></div>
 
-  <div id="app">
+  <main id="app">
 
     <!-- Zone 1: Stack Display -->
     <section id="stack-display" aria-label="Stack display" aria-live="polite">
-      <span id="memory-indicator" aria-label="Memory active"></span>
+      <span id="memory-indicator" role="status" aria-label="Memory active"></span>
       <div id="stack-rows"></div>
     </section>
 
@@ -103,11 +101,11 @@
       </div>
 
     </section>
-  </div>
+  </main>
 
-  <!-- History drawer -->
-  <div id="drawer" aria-label="Calculation history" role="complementary" aria-hidden="true">
-    <div id="drawer-body">
+  <!-- History drawer: handle always accessible; body inert when closed -->
+  <div id="drawer" aria-label="Calculation history" role="complementary">
+    <div id="drawer-body" inert>
       <div id="drawer-header">History</div>
       <div id="drawer-list" role="list"></div>
     </div>

@@ -16,10 +16,11 @@ function getEl(id) {
 function openDrawer() {
   _isOpen = true;
   const drawer = getEl('drawer');
+  const body   = getEl('drawer-body');
   const overlay = getEl('drawer-overlay');
   const handle = getEl('drawer-handle');
   drawer.classList.add('drawer--open');
-  drawer.setAttribute('aria-hidden', 'false');
+  if (body) body.removeAttribute('inert');
   overlay.classList.add('overlay--visible');
   if (handle) handle.setAttribute('aria-expanded', 'true');
   renderHistory(_engine);
@@ -28,10 +29,11 @@ function openDrawer() {
 function closeDrawer() {
   _isOpen = false;
   const drawer = getEl('drawer');
+  const body   = getEl('drawer-body');
   const overlay = getEl('drawer-overlay');
   const handle = getEl('drawer-handle');
   drawer.classList.remove('drawer--open');
-  drawer.setAttribute('aria-hidden', 'true');
+  if (body) body.setAttribute('inert', '');
   drawer.style.transform = '';
   overlay.classList.remove('overlay--visible');
   if (handle) handle.setAttribute('aria-expanded', 'false');
