@@ -1,4 +1,4 @@
-const CACHE_NAME = 'stax-v2';
+const CACHE_NAME = 'stax-v3';
 
 const CACHE_MANIFEST = [
   './',
@@ -21,6 +21,9 @@ const CACHE_MANIFEST = [
   './js/ui/drawer.js',
   './js/ui/slider.js',
   './js/ui/haptic.js',
+  './assets/icons/icon-192.png',
+  './assets/icons/icon-512.png',
+  './assets/icons/icon-maskable-512.png',
 ];
 
 self.addEventListener('install', event => {

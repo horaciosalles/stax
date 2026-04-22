@@ -1,7 +1,7 @@
 # WORK LOG — Stax
-Current milestone: M3 — Polish & Accessibility
-Last session: 2026-04-20
-Status: M3 COMPLETE ✓ | M4 IN PROGRESS
+Current milestone: M4 — Alpha
+Last session: 2026-04-21
+Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 (Beta) NEXT
 
 ## ACTIVE CHECKPOINT
 none
@@ -24,12 +24,20 @@ none
 - [x] Lighthouse (local): Performance 100, Accessibility 100, Best-Practices 96 (FCP 1.2s, LCP 1.4s, TBT 0ms, CLS 0)
 - [x] 3 ARIA violations fixed: landmark-one-main, aria-prohibited-attr, aria-hidden-focus (inert on drawer-body)
 
-## M4 PROGRESS (Alpha — feature complete)
+## M4 COMPLETE ✓ (Alpha — feature complete)
 - [x] Undo cap raised to 10,000 (effectively infinite); test updated
 - [x] Button font sizes increased: digit/op 1.9rem, func 1.2rem, enter 1.75rem; landscape updated proportionally
-- [x] Heavily embossed glassy button look: strong convex specular gradient, beveled border (bright top/dark bottom), deeper inset highlights + shadows; all key variants updated
-- [ ] All D-section acceptance criteria verified
-- [ ] No P0 bugs open; P1 bugs documented
+- [x] Heavily embossed glassy button look: narrow specular gleam, transparent body, beveled bevel border, inset shadows; translateY press animation (15ms), release 60ms
+- [x] Copy: clipboard fallback (execCommand) for iOS PWA + reads inputBuffer when mid-entry
+- [x] X register label highlighted orange (hardware-style active-register indicator)
+- [x] Service worker bumped to stax-v3; PWA icons added to CACHE_MANIFEST
+- [x] All 14 D-section acceptance criteria verified (D.1–D.14)
+- [x] ESLint: zero errors
+- [x] npm audit: zero high/critical vulnerabilities
+- [x] No P0 bugs open
+
+Known P2 (fix before Beta):
+- P2: npm audit reports 6 moderate vulns in esbuild/vite/vitest (dev toolchain only — not in shipped app; fix requires vitest 4.x upgrade which is a breaking change)
 
 M3 exit criteria (from blueprint §L.2 — "Vertical Slice"):
   Figma designs fully implemented ✓ | Lighthouse ≥ 90 pending | History drawer gesture ✓ | 0 P0/P1 bugs ✓
