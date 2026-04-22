@@ -67,3 +67,6 @@
 .stack-row:last-child            .stack-value { font-size: var(--font-stack-x); font-weight: 200; }
 .stack-row:nth-last-child(2)     .stack-value { font-size: var(--font-stack-y); font-weight: 300; }
 .stack-row:nth-last-child(n+3)   .stack-value { font-size: var(--font-stack-z); font-weight: 400; }
+
+/* X register label glows orange — marks the active register (what COPY targets) */
+.stack-row--x .stack-label { color: var(--color-accent-orange); }

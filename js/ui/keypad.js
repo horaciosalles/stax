@@ -7,6 +7,22 @@ let _engine = null;
 let _clrPending = false;
 let _clrTimer = null;
 
+function _writeClipboard(text) {
+  if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+    return navigator.clipboard.writeText(text);
+  }
+  // Legacy fallback (execCommand) for non-secure or restricted contexts
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+  document.body.appendChild(ta);
+  ta.select();
+  const ok = document.execCommand('copy');
+  document.body.removeChild(ta);
+  return ok ? Promise.resolve() : Promise.reject(new Error('copy failed'));
+}
+
 function handleResult(result) {
   if (result && result.error) {
     if (result.error === 'Error: Stack underflow') return;
@@ -104,12 +120,13 @@ function handleKey(key) {
   }
 
   case 'copy': {
-    const xVal = _engine.stack.length > 0
-      ? _engine.stack[_engine.stack.length - 1]
-      : 0;
+    // Mirror what the X register displays: inputBuffer takes priority when mid-entry
+    const xVal = _engine.isInputting
+      ? (parseFloat(_engine.inputBuffer) || 0)
+      : (_engine.stack.length > 0 ? _engine.stack[_engine.stack.length - 1] : 0);
     const text = formatNumber(xVal, _engine.sigDigits);
     const copyBtn = document.querySelector('[data-key="copy"]');
-    navigator.clipboard.writeText(text).then(() => {
+    _writeClipboard(text).then(() => {
       if (copyBtn) {
         copyBtn.textContent = STRINGS['key.copy_success'];
         copyBtn.classList.add('key--copy-success');

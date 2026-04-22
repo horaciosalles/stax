@@ -23,14 +23,13 @@
   font-size: var(--font-key-digit);
   font-weight: 500;
   color: var(--color-text-primary);
-  /* convex glass: bright specular band at top fading to slight darkening */
+  /* narrow specular gleam at top — rest is transparent so the glass depth shows */
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.62) 0%,
-      rgba(255, 255, 255, 0.24) 28%,
-      rgba(255, 255, 255, 0.05) 52%,
-      rgba(0, 0, 0, 0.07) 100%
+      rgba(255, 255, 255, 0.52) 0%,
+      rgba(255, 255, 255, 0.12) 14%,
+      rgba(255, 255, 255, 0.00) 34%
     ),
     var(--color-glass-key);
   backdrop-filter: var(--blur-key);
@@ -48,20 +47,20 @@
   justify-content: center;
   box-shadow: var(--shadow-key);
   transition:
-    transform 130ms cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 130ms ease,
-    filter 80ms ease;
+    transform 60ms ease-out,
+    box-shadow 60ms ease-out,
+    filter 50ms ease-out;
   user-select: none;
 }
 
 .key:active {
-  transform: scale(0.91);
+  transform: translateY(2px);
   box-shadow: var(--shadow-key-press);
-  filter: brightness(0.85);
+  filter: brightness(0.80);
   transition:
-    transform 55ms ease-out,
-    box-shadow 55ms ease-out,
-    filter 55ms ease-out;
+    transform 15ms ease-out,
+    box-shadow 15ms ease-out,
+    filter 15ms ease-out;
 }
 
 .key:hover:not(:active) {
@@ -80,10 +79,9 @@
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.48) 0%,
-      rgba(255, 255, 255, 0.18) 30%,
-      rgba(255, 255, 255, 0.04) 55%,
-      rgba(0, 0, 0, 0.06) 100%
+      rgba(255, 255, 255, 0.40) 0%,
+      rgba(255, 255, 255, 0.08) 14%,
+      rgba(255, 255, 255, 0.00) 34%
     ),
     var(--color-glass-key-muted);
   font-size: var(--font-key-func);
@@ -100,10 +98,9 @@
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.48) 0%,
-      rgba(255, 255, 255, 0.18) 30%,
-      rgba(255, 255, 255, 0.04) 55%,
-      rgba(0, 0, 0, 0.06) 100%
+      rgba(255, 255, 255, 0.40) 0%,
+      rgba(255, 255, 255, 0.08) 14%,
+      rgba(255, 255, 255, 0.00) 34%
     ),
     var(--color-glass-key-muted);
   font-size: var(--font-key-func);
@@ -117,10 +114,9 @@
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.58) 0%,
-      rgba(255, 255, 255, 0.22) 28%,
-      rgba(255, 255, 255, 0.04) 52%,
-      rgba(0, 0, 0, 0.08) 100%
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.12) 14%,
+      rgba(255, 255, 255, 0.00) 34%
     ),
     var(--color-key-operator);
   border-color:
@@ -139,10 +135,9 @@
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.58) 0%,
-      rgba(255, 255, 255, 0.22) 28%,
-      rgba(255, 255, 255, 0.04) 52%,
-      rgba(0, 0, 0, 0.08) 100%
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.12) 14%,
+      rgba(255, 255, 255, 0.00) 34%
     ),
     var(--color-key-enter);
   border-color:

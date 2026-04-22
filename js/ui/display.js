@@ -29,15 +29,15 @@ export function renderStack(engine, { pushAnimation = false } = {}) {
       const label = depth === 1 ? 'y' : depth === 2 ? 'z' : '';
       rows.push({ label, text: formatNumber(engine.stack[i], engine.sigDigits) });
     }
-    rows.push({ label: 'x', text: engine.inputBuffer, isInput: true, hasCursor: true });
+    rows.push({ label: 'x', text: engine.inputBuffer, isInput: true, hasCursor: true, isX: true });
   } else if (engine.stack.length > 0) {
     for (let i = 0; i < engine.stack.length; i++) {
       const depth = engine.stack.length - 1 - i; // 0 = X, 1 = Y, 2 = Z
       const label = depth === 0 ? 'x' : depth === 1 ? 'y' : depth === 2 ? 'z' : '';
-      rows.push({ label, text: formatNumber(engine.stack[i], engine.sigDigits) });
+      rows.push({ label, text: formatNumber(engine.stack[i], engine.sigDigits), isX: depth === 0 });
     }
   } else {
-    rows.push({ label: 'x', text: '0', isEmpty: true });
+    rows.push({ label: 'x', text: '0', isEmpty: true, isX: true });
   }
 
   if (_errorText) {
@@ -48,7 +48,9 @@ export function renderStack(engine, { pushAnimation = false } = {}) {
 
   for (const row of rows) {
     const div = document.createElement('div');
-    div.className = 'stack-row' + (pushAnimation ? ' stack-row--enter' : '');
+    div.className = 'stack-row' +
+      (pushAnimation ? ' stack-row--enter' : '') +
+      (row.isX ? ' stack-row--x' : '');
 
     const labelEl = document.createElement('span');
     labelEl.className = 'stack-label';
