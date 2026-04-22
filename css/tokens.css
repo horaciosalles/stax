@@ -61,10 +61,10 @@
   --font-stack-x:   2.8rem;
   --font-stack-y:   1.8rem;
   --font-stack-z:   1.25rem;
-  --font-key-digit: 1.9rem;
-  --font-key-op:    1.9rem;
-  --font-key-func:  1.2rem;
-  --font-key-enter: 1.75rem;
+  --font-key-digit: 3.0rem;
+  --font-key-op:    3.0rem;
+  --font-key-func:  1.5rem;
+  --font-key-enter: 2.6rem;
 }
 
 @media (prefers-color-scheme: light) {

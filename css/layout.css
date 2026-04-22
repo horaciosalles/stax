@@ -62,8 +62,8 @@
   /* Tighter keys + smaller fonts in landscape */
   .key {
     min-block-size: 34px !important;
-    --font-key-digit: 1.45rem;
-    --font-key-op:    1.45rem;
+    --font-key-digit: 2.1rem;
+    --font-key-op:    2.1rem;
   }
 
   .key--func,
@@ -71,11 +71,11 @@
   .key--mem,
   .key--action {
     min-block-size: 28px !important;
-    --font-key-func:  0.95rem;
+    --font-key-func:  1.1rem;
   }
 
   .key--enter {
-    --font-key-enter: 1.35rem;
+    --font-key-enter: 1.9rem;
   }
 
   .slider-row {

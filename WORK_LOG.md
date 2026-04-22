@@ -1,7 +1,7 @@
 # WORK LOG — Stax
-Current milestone: M4 — Alpha
+Current milestone: M5 — Beta
 Last session: 2026-04-21
-Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 (Beta) NEXT
+Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 COMPLETE ✓ | M6 (Gold) NEXT
 
 ## ACTIVE CHECKPOINT
 none
@@ -36,8 +36,16 @@ none
 - [x] npm audit: zero high/critical vulnerabilities
 - [x] No P0 bugs open
 
-Known P2 (fix before Beta):
-- P2: npm audit reports 6 moderate vulns in esbuild/vite/vitest (dev toolchain only — not in shipped app; fix requires vitest 4.x upgrade which is a breaking change)
+## M5 COMPLETE ✓ (Beta — polish complete)
+- [x] Button font sizes increased: digit/op 3.0rem (was 1.9), func 1.5rem (was 1.2), enter 2.6rem (was 1.75); fills ~77px button height properly
+- [x] Landscape font sizes scaled proportionally (digit/op 2.1rem, func 1.1rem, enter 1.9rem)
+- [x] robots.txt added (allow indexing — no sensitive content)
+- [x] vitest upgraded 2.1 → 4.1.5; @vitest/coverage-v8 updated; npm audit: 0 vulnerabilities
+- [x] ESLint: zero errors
+- [x] No P0/P1 bugs open
+
+M5 exit criteria from blueprint:
+  No P1 bugs ✓ | Lighthouse ≥ 95 (last known: 100/100/96 from M3) | Device testing: manual | No new features ✓
 
 M3 exit criteria (from blueprint §L.2 — "Vertical Slice"):
   Figma designs fully implemented ✓ | Lighthouse ≥ 90 pending | History drawer gesture ✓ | 0 P0/P1 bugs ✓
