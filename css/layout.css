@@ -68,7 +68,6 @@
 
   .key--func,
   .key--stack-op,
-  .key--mem,
   .key--action {
     --font-key-func:  0.95rem;
   }
