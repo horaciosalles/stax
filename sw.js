@@ -1,4 +1,4 @@
-const CACHE_NAME = 'stax-v3';
+const CACHE_NAME = 'stax-v4';
 
 const CACHE_MANIFEST = [
   './',
