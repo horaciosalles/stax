@@ -2,7 +2,7 @@
 
 #drawer {
   position: fixed;
-  top: 38dvh;
+  top: 16dvh;
   bottom: 0;
   left: 0;
   width: calc(min(320px, 82vw) + 38px);
@@ -65,14 +65,27 @@
   border-inline-start: none;
   border-radius: var(--radius-handle);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  align-self: center;
+  gap: 10px;
+  align-self: flex-start;
   flex-shrink: 0;
   cursor: pointer;
   color: var(--color-text-secondary);
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.40);
   transition: filter 120ms ease;
+}
+
+.drawer-handle__label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-text-tertiary);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  user-select: none;
 }
 
 #drawer-handle:active {
