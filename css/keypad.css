@@ -88,21 +88,6 @@
 /* ── Stack op overrides ── */
 .key--clr  { color: var(--color-accent-red); }
 
-/* ── Memory keys ── */
-.key--mem {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.40) 0%,
-      rgba(255, 255, 255, 0.08) 14%,
-      rgba(255, 255, 255, 0.00) 34%
-    ),
-    var(--color-glass-key-muted);
-  font-size: var(--font-key-func);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--color-accent-blue);
-}
 
 /* ── Operator keys — vivid orange glass ── */
 .key--operator {

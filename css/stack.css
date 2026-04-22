@@ -7,22 +7,6 @@
   padding: var(--space-md) var(--space-md) calc(var(--space-md) + 4px);
 }
 
-#memory-indicator {
-  position: absolute;
-  inset-block-start: 14px;
-  inset-inline-end: 14px;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-accent-blue);
-  font-weight: 700;
-  opacity: 0;
-  transition: opacity 220ms ease;
-}
-
-#memory-indicator:not(:empty) {
-  opacity: 1;
-}
 
 #stack-rows {
   display: flex;

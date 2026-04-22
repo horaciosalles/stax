@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx eslint *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git config *)",
+      "Bash(gh repo *)",
+      "Bash(git commit -m 'chore: update work log — M1 complete, M2 next *)",
+      "Bash(git push *)",
+      "Read(//c/Users/horac/.claude/projects/c--Users-horac-Documents-ARQUIVO-TI-GERAL-MEU-GITHUB-stax/memory\" 2>/dev/**)",
+      "Bash(gh run *)",
+      "Bash(gh api *)",
+      "Read(//c/c/Users/horac/Documents/ARQUIVO/TI GERAL/MEU GITHUB/stax/**)",
+      "Bash(sed -n '1417,1435p' stax_blueprint.md)",
+      "Bash(sed -n '512,535p' stax_blueprint.md)",
+      "Bash(sed -n '860,895p' stax_blueprint.md)",
+      "Bash(sed -n '895,970p' stax_blueprint.md)",
+      "Bash(sed -n '929,1015p' stax_blueprint.md)",
+      "Bash(git commit -m 'fix\\(sw\\): bump cache to stax-v2 to evict stale CSS *)",
+      "Bash(git commit -m 'ci: deploy via actions/deploy-pages, drop gh-pages branch *)",
+      "Bash(git commit -m 'docs\\(log\\): update WORK_LOG for M3 session — all commits captured *)",
+      "Bash(node scripts/gen-icons.js)",
+      "Bash(npx lighthouse *)",
+      "Bash(git commit -m 'fix\\(a11y\\): WCAG AA contrast fixes — M3 exit criteria *)",
+      "Bash(ls -lh .lighthouse-report.json)",
+      "Bash(node -e ' *)",
+      "Bash(npx serve *)",
+      "Bash(git commit -m 'docs\\(log\\): M3 complete — Lighthouse 100/100, WCAG AA, all criteria met *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\(p.version,p.scripts\\)\")",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git log *)",
+      "Bash(npm audit *)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

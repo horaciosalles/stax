@@ -101,11 +101,6 @@ function handleKey(key) {
     break;
   }
 
-  case 'sto':  _engine.sto();   renderStack(_engine); vibrate(10); break;
-  case 'rcl':  _engine.rcl();   renderStack(_engine); vibrate(10); break;
-  case 'mplus':  _engine.mplus();  renderStack(_engine); vibrate(10); break;
-  case 'mminus': _engine.mminus(); renderStack(_engine); vibrate(10); break;
-
   case 'undo': {
     const ok = _engine.undo();
     if (!ok) {

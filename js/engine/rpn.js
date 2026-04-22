@@ -4,7 +4,6 @@ export class RpnEngine {
     this.stack = [];
     this.inputBuffer = '';
     this.isInputting = false;
-    this.memoryRegister = 0;
     this.undoStack = [];
     this.sigDigits = 8;
     this.historyLog = [];
@@ -17,7 +16,6 @@ export class RpnEngine {
       stack: [...this.stack],
       inputBuffer: this.inputBuffer,
       isInputting: this.isInputting,
-      memoryRegister: this.memoryRegister,
     });
     if (this.undoStack.length > 10000) this.undoStack.shift();
   }
@@ -260,42 +258,6 @@ export class RpnEngine {
     this.isInputting = false;
   }
 
-  // ── Memory operations ─────────────────────────────────────────────────────
-
-  /** Store X value into memory register without affecting stack. */
-  sto() {
-    const x = this.isInputting
-      ? (isNaN(parseFloat(this.inputBuffer)) ? 0 : parseFloat(this.inputBuffer))
-      : (this.stack.length > 0 ? this.stack[this.stack.length - 1] : 0);
-    this._saveSnapshot();
-    this.memoryRegister = x;
-  }
-
-  /** Push memory register value onto stack. */
-  rcl() {
-    if (this.isInputting) this._autoLift();
-    this._saveSnapshot();
-    this.stack.push(this.memoryRegister);
-  }
-
-  /** Add X to memory register without affecting stack. */
-  mplus() {
-    const x = this.isInputting
-      ? (isNaN(parseFloat(this.inputBuffer)) ? 0 : parseFloat(this.inputBuffer))
-      : (this.stack.length > 0 ? this.stack[this.stack.length - 1] : 0);
-    this._saveSnapshot();
-    this.memoryRegister += x;
-  }
-
-  /** Subtract X from memory register without affecting stack. */
-  mminus() {
-    const x = this.isInputting
-      ? (isNaN(parseFloat(this.inputBuffer)) ? 0 : parseFloat(this.inputBuffer))
-      : (this.stack.length > 0 ? this.stack[this.stack.length - 1] : 0);
-    this._saveSnapshot();
-    this.memoryRegister -= x;
-  }
-
   // ── Undo ──────────────────────────────────────────────────────────────────
 
   /** Restore engine to the state before the last stack-modifying action. */
@@ -305,7 +267,6 @@ export class RpnEngine {
     this.stack = snap.stack;
     this.inputBuffer = snap.inputBuffer;
     this.isInputting = snap.isInputting;
-    this.memoryRegister = snap.memoryRegister;
     return true;
   }
 }

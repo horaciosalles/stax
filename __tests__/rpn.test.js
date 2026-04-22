@@ -26,7 +26,6 @@ describe('initial state', () => {
   it('has empty stack', () => { expect(e.stack).toEqual([]); });
   it('has empty input buffer', () => { expect(e.inputBuffer).toBe(''); });
   it('is not inputting', () => { expect(e.isInputting).toBe(false); });
-  it('has zero memory', () => { expect(e.memoryRegister).toBe(0); });
   it('has sigDigits 8', () => { expect(e.sigDigits).toBe(8); });
   it('has empty history', () => { expect(e.historyLog).toEqual([]); });
 });
@@ -397,62 +396,6 @@ describe('clr()', () => {
   });
 });
 
-// ── Memory operations ─────────────────────────────────────────────────────
-describe('sto()', () => {
-  it('stores top of stack without popping', () => {
-    push(e, 42); e.sto();
-    expect(e.memoryRegister).toBe(42);
-    expect(e.stack).toEqual([42]);
-  });
-
-  it('stores 0 when stack empty', () => {
-    e.sto();
-    expect(e.memoryRegister).toBe(0);
-  });
-
-  it('stores from input buffer without pushing to stack', () => {
-    e.digit(7); e.sto();
-    expect(e.memoryRegister).toBe(7);
-    expect(e.isInputting).toBe(true);
-    expect(e.stack).toEqual([]);
-  });
-});
-
-describe('rcl()', () => {
-  it('pushes memory to stack', () => {
-    push(e, 5); e.sto(); e.clx();
-    e.rcl();
-    expect(e.stack).toEqual([5]);
-  });
-
-  it('memory unchanged after rcl', () => {
-    push(e, 3); e.sto(); e.rcl();
-    expect(e.memoryRegister).toBe(3);
-  });
-
-  it('pushes 0 when memory is 0', () => {
-    e.rcl();
-    expect(e.stack).toEqual([0]);
-  });
-});
-
-describe('mplus()', () => {
-  it('adds X to memory without popping stack', () => {
-    push(e, 5); e.sto();
-    push(e, 3); e.mplus();
-    expect(e.memoryRegister).toBe(8);
-    expect(e.stack[e.stack.length - 1]).toBe(3);
-  });
-});
-
-describe('mminus()', () => {
-  it('subtracts X from memory', () => {
-    push(e, 10); e.sto();
-    push(e, 4); e.mminus();
-    expect(e.memoryRegister).toBe(6);
-  });
-});
-
 // ── Undo ──────────────────────────────────────────────────────────────────
 describe('undo()', () => {
   it('returns false with no history', () => {
@@ -476,13 +419,6 @@ describe('undo()', () => {
     e.undo(); expect(e.stack).toEqual([8, 2]); // snap 5 removed
     e.undo(); expect(e.stack).toEqual([8]);     // snap 4 removed
     e.undo(); expect(e.stack).toEqual([3, 5]);  // snap 3 removed
-  });
-
-  it('restores memory register', () => {
-    push(e, 7); e.sto();
-    push(e, 3); e.sto();
-    e.undo();
-    expect(e.memoryRegister).toBe(7);
   });
 
   it('caps at 10000 snapshots', () => {

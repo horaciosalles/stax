@@ -28,7 +28,6 @@
 
     <!-- Zone 1: Stack Display -->
     <section id="stack-display" aria-label="Stack display" aria-live="polite">
-      <span id="memory-indicator" role="status" aria-label="Memory active"></span>
       <div id="stack-rows"></div>
     </section>
 
@@ -42,7 +41,7 @@
         <span id="sig-value">8</span>
       </div>
 
-      <!-- Row 1: stack ops + backspace -->
+      <!-- Row 1: stack navigation -->
       <div class="key-row">
         <button class="key key--stack-op key--clr" data-key="clr"       aria-label="Clear stack">CLR</button>
         <button class="key key--stack-op"          data-key="swap"      aria-label="Swap X and Y">SWAP</button>
@@ -51,16 +50,7 @@
         <button class="key key--stack-op"          data-key="backspace" aria-label="Backspace">⌫</button>
       </div>
 
-      <!-- Row 2: memory + reciprocal -->
-      <div class="key-row">
-        <button class="key key--mem"  data-key="sto"        aria-label="Store to memory">STO</button>
-        <button class="key key--mem"  data-key="rcl"        aria-label="Recall from memory">RCL</button>
-        <button class="key key--mem"  data-key="mplus"      aria-label="Add to memory">M+</button>
-        <button class="key key--mem"  data-key="mminus"     aria-label="Subtract from memory">M−</button>
-        <button class="key key--func" data-key="reciprocal" aria-label="1 divided by X">1/x</button>
-      </div>
-
-      <!-- Rows 3–6: HP-style digit grid — sci fn left, digits centre, operator right -->
+      <!-- Rows 2–5: HP-style digit grid — sci fn left · digits centre · operator right -->
       <div class="key-row">
         <button class="key key--func"     data-key="sqrt"    aria-label="Square root">√</button>
         <button class="key key--digit"    data-key="digit-7" aria-label="7">7</button>
@@ -90,7 +80,7 @@
         <button class="key key--operator" data-key="plus"    aria-label="Add">+</button>
       </div>
 
-      <!-- Row 7: ENTER full width -->
+      <!-- Row 6: ENTER full width -->
       <div class="key-row key-row--action">
         <button class="key key--enter" data-key="enter" aria-label="Enter">ENTER</button>
       </div>

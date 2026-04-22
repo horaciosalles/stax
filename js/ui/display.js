@@ -18,9 +18,6 @@ export function renderStack(engine, { pushAnimation = false } = {}) {
   if (!container) return;
   container.textContent = '';
 
-  const mem = document.getElementById('memory-indicator');
-  if (mem) mem.textContent = engine.memoryRegister !== 0 ? 'M' : '';
-
   const rows = [];
 
   if (engine.isInputting) {
