@@ -1,6 +1,6 @@
 # WORK LOG — Stax
-Current milestone: M5 — Beta
-Last session: 2026-04-21
+Current milestone: M6 — Gold
+Last session: 2026-04-22
 Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 COMPLETE ✓ | M6 (Gold) NEXT
 
 ## ACTIVE CHECKPOINT
@@ -56,11 +56,15 @@ M5 exit criteria from blueprint:
 M3 exit criteria (from blueprint §L.2 — "Vertical Slice"):
   Figma designs fully implemented ✓ | Lighthouse ≥ 90 pending | History drawer gesture ✓ | 0 P0/P1 bugs ✓
 
-## SESSION HISTORY (last 4)
+## SESSION HISTORY (last 5)
+2026-04-22 — M5 closure session. Dead strings removed (key.copy*, key.inv), stale
+             .key--mem CSS reference removed, WORK_LOG synced. M5 formally closed;
+             M6 (Gold) set as active milestone.
+             Commits: b3a1dc9 (memory+layout refactor), fa9fa82 (m5 cleanup).
 2026-04-21 — M4/M5 session. Embossed glass keys, translateY press animation, tap-to-copy
              X register, HP-12C 5×5 layout, memory removal, font tuning, dead code
              cleanup. SW v3→v5. 104→94 tests. ESLint/audit clean.
-             Commits: 0d017ec, bbcd637, d44bb0e, c57a2d0, (memory+layout).
+             Commits: 0d017ec, bbcd637, d44bd0e, c57a2d0.
 2026-04-20 — M3 session. Liquid Glass redesign (all CSS rewritten: tokens, layout,
              keypad, stack, history, slider, animations). Landscape support added.
              Portrait layout fixed (full-width, 30% stack). Service worker cache
