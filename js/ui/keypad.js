@@ -119,30 +119,6 @@ function handleKey(key) {
     break;
   }
 
-  case 'copy': {
-    // Mirror what the X register displays: inputBuffer takes priority when mid-entry
-    const xVal = _engine.isInputting
-      ? (parseFloat(_engine.inputBuffer) || 0)
-      : (_engine.stack.length > 0 ? _engine.stack[_engine.stack.length - 1] : 0);
-    const text = formatNumber(xVal, _engine.sigDigits);
-    const copyBtn = document.querySelector('[data-key="copy"]');
-    _writeClipboard(text).then(() => {
-      if (copyBtn) {
-        copyBtn.textContent = STRINGS['key.copy_success'];
-        copyBtn.classList.add('key--copy-success');
-        setTimeout(() => {
-          if (copyBtn) {
-            copyBtn.textContent = STRINGS['key.copy'];
-            copyBtn.classList.remove('key--copy-success');
-          }
-        }, 1500);
-      }
-    }).catch(() => {
-      if (copyBtn) copyBtn.textContent = STRINGS['key.copy_fail'];
-      setTimeout(() => { if (copyBtn) copyBtn.textContent = STRINGS['key.copy']; }, 1500);
-    });
-    break;
-  }
   }
 
   _updateUndoState();
@@ -182,6 +158,19 @@ export function initKeypad(engine) {
 
   document.querySelectorAll('[data-key]').forEach(btn => {
     btn.addEventListener('pointerdown', () => handleKey(btn.dataset.key));
+  });
+
+  // Tap the X register row to copy its value
+  document.getElementById('stack-display').addEventListener('pointerdown', e => {
+    const xRow = e.target.closest('[data-action="copy-x"]');
+    if (!xRow) return;
+    const xVal = _engine.isInputting
+      ? (parseFloat(_engine.inputBuffer) || 0)
+      : (_engine.stack.length > 0 ? _engine.stack[_engine.stack.length - 1] : 0);
+    _writeClipboard(formatNumber(xVal, _engine.sigDigits)).then(() => {
+      xRow.classList.add('copied');
+      setTimeout(() => xRow.classList.remove('copied'), 1200);
+    }).catch(() => {});
   });
 
   // Sig-digits slider

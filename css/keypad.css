@@ -2,17 +2,13 @@
 
 .key-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--space-xs);
   flex: 1;
 }
 
-.key-row--func {
-  grid-template-columns: repeat(5, 1fr);
-}
-
 .key-row--action {
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr;
 }
 
 /* ── Base key — embossed glass tile ── */

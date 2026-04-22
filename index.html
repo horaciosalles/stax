@@ -42,62 +42,57 @@
         <span id="sig-value">8</span>
       </div>
 
-      <!-- Stack ops row: CLR SWAP ROT CLX -->
+      <!-- Stack ops row: CLR SWAP ROT CLX ⌫ -->
       <div class="key-row key-row--ops">
-        <button class="key key--stack-op key--clr"  data-key="clr"  aria-label="Clear stack">CLR</button>
-        <button class="key key--stack-op"           data-key="swap" aria-label="Swap X and Y">SWAP</button>
-        <button class="key key--stack-op"           data-key="rot"  aria-label="Roll stack">ROT</button>
-        <button class="key key--stack-op"           data-key="clx"  aria-label="Clear X">CLX</button>
+        <button class="key key--stack-op key--clr" data-key="clr"       aria-label="Clear stack">CLR</button>
+        <button class="key key--stack-op"          data-key="swap"      aria-label="Swap X and Y">SWAP</button>
+        <button class="key key--stack-op"          data-key="rot"       aria-label="Roll stack">ROT</button>
+        <button class="key key--stack-op"          data-key="clx"       aria-label="Clear X">CLX</button>
+        <button class="key key--stack-op"          data-key="backspace" aria-label="Backspace">⌫</button>
       </div>
 
-      <!-- Memory row: STO RCL M+ M− -->
+      <!-- Memory row: STO RCL M+ M− 1/x -->
       <div class="key-row key-row--mem">
-        <button class="key key--mem" data-key="sto"    aria-label="Store to memory">STO</button>
-        <button class="key key--mem" data-key="rcl"    aria-label="Recall from memory">RCL</button>
-        <button class="key key--mem" data-key="mplus"  aria-label="Add to memory">M+</button>
-        <button class="key key--mem" data-key="mminus" aria-label="Subtract from memory">M−</button>
-      </div>
-
-      <!-- Function key row: √ yˣ % ± 1/x -->
-      <div class="key-row key-row--func">
-        <button class="key key--func" data-key="sqrt"       aria-label="Square root">√</button>
-        <button class="key key--func" data-key="pow"        aria-label="Y to the power X">yˣ</button>
-        <button class="key key--func" data-key="percent"    aria-label="Percent">%</button>
-        <button class="key key--func" data-key="sign"       aria-label="Change sign">±</button>
+        <button class="key key--mem"  data-key="sto"        aria-label="Store to memory">STO</button>
+        <button class="key key--mem"  data-key="rcl"        aria-label="Recall from memory">RCL</button>
+        <button class="key key--mem"  data-key="mplus"      aria-label="Add to memory">M+</button>
+        <button class="key key--mem"  data-key="mminus"     aria-label="Subtract from memory">M−</button>
         <button class="key key--func" data-key="reciprocal" aria-label="1 divided by X">1/x</button>
       </div>
 
-      <!-- Number rows -->
+      <!-- Number rows + scientific column -->
       <div class="key-row">
-        <button class="key key--digit" data-key="digit-7" aria-label="7">7</button>
-        <button class="key key--digit" data-key="digit-8" aria-label="8">8</button>
-        <button class="key key--digit" data-key="digit-9" aria-label="9">9</button>
-        <button class="key key--operator" data-key="divide" aria-label="Divide">÷</button>
+        <button class="key key--digit"    data-key="digit-7" aria-label="7">7</button>
+        <button class="key key--digit"    data-key="digit-8" aria-label="8">8</button>
+        <button class="key key--digit"    data-key="digit-9" aria-label="9">9</button>
+        <button class="key key--operator" data-key="divide"  aria-label="Divide">÷</button>
+        <button class="key key--func"     data-key="sqrt"    aria-label="Square root">√</button>
       </div>
       <div class="key-row">
-        <button class="key key--digit" data-key="digit-4" aria-label="4">4</button>
-        <button class="key key--digit" data-key="digit-5" aria-label="5">5</button>
-        <button class="key key--digit" data-key="digit-6" aria-label="6">6</button>
+        <button class="key key--digit"    data-key="digit-4"  aria-label="4">4</button>
+        <button class="key key--digit"    data-key="digit-5"  aria-label="5">5</button>
+        <button class="key key--digit"    data-key="digit-6"  aria-label="6">6</button>
         <button class="key key--operator" data-key="multiply" aria-label="Multiply">×</button>
+        <button class="key key--func"     data-key="pow"      aria-label="Y to the power X">yˣ</button>
       </div>
       <div class="key-row">
-        <button class="key key--digit" data-key="digit-1" aria-label="1">1</button>
-        <button class="key key--digit" data-key="digit-2" aria-label="2">2</button>
-        <button class="key key--digit" data-key="digit-3" aria-label="3">3</button>
-        <button class="key key--operator" data-key="minus" aria-label="Subtract">−</button>
+        <button class="key key--digit"    data-key="digit-1" aria-label="1">1</button>
+        <button class="key key--digit"    data-key="digit-2" aria-label="2">2</button>
+        <button class="key key--digit"    data-key="digit-3" aria-label="3">3</button>
+        <button class="key key--operator" data-key="minus"   aria-label="Subtract">−</button>
+        <button class="key key--func"     data-key="percent" aria-label="Percent">%</button>
       </div>
       <div class="key-row">
-        <button class="key key--digit" data-key="digit-0" aria-label="0">0</button>
-        <button class="key key--digit" data-key="decimal" aria-label="Decimal point">.</button>
-        <button class="key key--stack-op" data-key="undo" aria-label="Undo">UNDO</button>
-        <button class="key key--operator" data-key="plus" aria-label="Add">+</button>
+        <button class="key key--digit"    data-key="digit-0" aria-label="0">0</button>
+        <button class="key key--digit"    data-key="decimal" aria-label="Decimal point">.</button>
+        <button class="key key--stack-op" data-key="undo"    aria-label="Undo">UNDO</button>
+        <button class="key key--operator" data-key="plus"    aria-label="Add">+</button>
+        <button class="key key--func"     data-key="sign"    aria-label="Change sign">±</button>
       </div>
 
-      <!-- Action row: COPY + ← + ENTER -->
+      <!-- Action row: ENTER full width -->
       <div class="key-row key-row--action">
-        <button class="key key--action" data-key="copy"      aria-label="Copy X register">COPY</button>
-        <button class="key key--action" data-key="backspace" aria-label="Backspace">⌫</button>
-        <button class="key key--enter"  data-key="enter"     aria-label="Enter">ENTER</button>
+        <button class="key key--enter" data-key="enter" aria-label="Enter">ENTER</button>
       </div>
 
     </section>

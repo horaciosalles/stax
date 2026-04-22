@@ -51,6 +51,7 @@ export function renderStack(engine, { pushAnimation = false } = {}) {
     div.className = 'stack-row' +
       (pushAnimation ? ' stack-row--enter' : '') +
       (row.isX ? ' stack-row--x' : '');
+    if (row.isX) div.dataset.action = 'copy-x';
 
     const labelEl = document.createElement('span');
     labelEl.className = 'stack-label';

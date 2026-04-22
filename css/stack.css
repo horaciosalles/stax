@@ -68,5 +68,27 @@
 .stack-row:nth-last-child(2)     .stack-value { font-size: var(--font-stack-y); font-weight: 300; }
 .stack-row:nth-last-child(n+3)   .stack-value { font-size: var(--font-stack-z); font-weight: 400; }
 
-/* X register label glows orange — marks the active register (what COPY targets) */
+/* X register label glows orange — marks the active register */
 .stack-row--x .stack-label { color: var(--color-accent-orange); }
+
+/* Tap-to-copy affordance on X register */
+.stack-row--x {
+  cursor: pointer;
+}
+
+.stack-row--x::after {
+  content: '⎘';
+  font-size: 0.6rem;
+  color: var(--color-text-tertiary);
+  opacity: 0.45;
+  align-self: center;
+  flex-shrink: 0;
+  padding-inline-start: 6px;
+  transition: opacity 120ms ease, color 120ms ease;
+}
+
+.stack-row--x.copied::after {
+  content: '✓';
+  color: var(--color-accent-green);
+  opacity: 1;
+}
