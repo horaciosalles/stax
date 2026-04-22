@@ -485,11 +485,11 @@ describe('undo()', () => {
     expect(e.memoryRegister).toBe(7);
   });
 
-  it('caps at 50 snapshots', () => {
-    for (let i = 0; i < 60; i++) {
+  it('caps at 10000 snapshots', () => {
+    for (let i = 0; i < 10010; i++) {
       e.digit(1); e.enter();
     }
-    expect(e.undoStack.length).toBeLessThanOrEqual(50);
+    expect(e.undoStack.length).toBeLessThanOrEqual(10000);
   });
 
   it('does not create a snapshot for digit presses', () => {

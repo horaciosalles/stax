@@ -19,7 +19,7 @@ export class RpnEngine {
       isInputting: this.isInputting,
       memoryRegister: this.memoryRegister,
     });
-    if (this.undoStack.length > 50) this.undoStack.shift();
+    if (this.undoStack.length > 10000) this.undoStack.shift();
   }
 
   /** Push input buffer to stack without creating an undo snapshot (auto-lift). */

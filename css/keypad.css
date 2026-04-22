@@ -16,24 +16,32 @@
   grid-template-columns: 1fr 1fr 2fr;
 }
 
-/* ── Base key — glass tile ── */
+/* ── Base key — embossed glass tile ── */
 .key {
   border-radius: var(--radius-key);
   font-family: var(--font-family);
   font-size: var(--font-key-digit);
   font-weight: 500;
   color: var(--color-text-primary);
-  /* glass: white gradient overlay on top of base tint */
+  /* convex glass: bright specular band at top fading to slight darkening */
   background:
     linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.13) 0%,
-      rgba(255, 255, 255, 0.00) 50%
+      180deg,
+      rgba(255, 255, 255, 0.62) 0%,
+      rgba(255, 255, 255, 0.24) 28%,
+      rgba(255, 255, 255, 0.05) 52%,
+      rgba(0, 0, 0, 0.07) 100%
     ),
     var(--color-glass-key);
   backdrop-filter: var(--blur-key);
   -webkit-backdrop-filter: var(--blur-key);
-  border: 1px solid var(--color-glass-border);
+  /* beveled border: bright top, dark bottom */
+  border: 1px solid;
+  border-color:
+    rgba(255, 255, 255, 0.55)
+    rgba(255, 255, 255, 0.18)
+    rgba(0, 0, 0, 0.32)
+    rgba(255, 255, 255, 0.18);
   min-block-size: 44px;
   display: flex;
   align-items: center;
@@ -71,9 +79,11 @@
 .key--action {
   background:
     linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.09) 0%,
-      rgba(255, 255, 255, 0.00) 50%
+      180deg,
+      rgba(255, 255, 255, 0.48) 0%,
+      rgba(255, 255, 255, 0.18) 30%,
+      rgba(255, 255, 255, 0.04) 55%,
+      rgba(0, 0, 0, 0.06) 100%
     ),
     var(--color-glass-key-muted);
   font-size: var(--font-key-func);
@@ -89,9 +99,11 @@
 .key--mem {
   background:
     linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.09) 0%,
-      rgba(255, 255, 255, 0.00) 50%
+      180deg,
+      rgba(255, 255, 255, 0.48) 0%,
+      rgba(255, 255, 255, 0.18) 30%,
+      rgba(255, 255, 255, 0.04) 55%,
+      rgba(0, 0, 0, 0.06) 100%
     ),
     var(--color-glass-key-muted);
   font-size: var(--font-key-func);
@@ -104,33 +116,45 @@
 .key--operator {
   background:
     linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.00) 45%
+      180deg,
+      rgba(255, 255, 255, 0.58) 0%,
+      rgba(255, 255, 255, 0.22) 28%,
+      rgba(255, 255, 255, 0.04) 52%,
+      rgba(0, 0, 0, 0.08) 100%
     ),
     var(--color-key-operator);
-  border-color: rgba(255, 149, 0, 0.35);
+  border-color:
+    rgba(255, 200, 100, 0.65)
+    rgba(255, 149, 0, 0.28)
+    rgba(120, 60, 0, 0.45)
+    rgba(255, 149, 0, 0.28);
   color: #FFFFFF;
   font-size: var(--font-key-op);
   font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.30);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
 /* ── Enter key — vivid green glass ── */
 .key--enter {
   background:
     linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.00) 45%
+      180deg,
+      rgba(255, 255, 255, 0.58) 0%,
+      rgba(255, 255, 255, 0.22) 28%,
+      rgba(255, 255, 255, 0.04) 52%,
+      rgba(0, 0, 0, 0.08) 100%
     ),
     var(--color-key-enter);
-  border-color: rgba(52, 199, 89, 0.35);
+  border-color:
+    rgba(180, 255, 180, 0.65)
+    rgba(52, 199, 89, 0.28)
+    rgba(20, 90, 40, 0.45)
+    rgba(52, 199, 89, 0.28);
   color: #FFFFFF;
   font-size: var(--font-key-enter);
   font-weight: 700;
   letter-spacing: 0.06em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.30);
 }
 
 /* ── COPY success flash ── */

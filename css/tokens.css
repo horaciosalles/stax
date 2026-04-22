@@ -5,8 +5,8 @@
 
   /* Glass surfaces */
   --color-glass-panel:    rgba(18, 18, 38, 0.60);
-  --color-glass-key:      rgba(255, 255, 255, 0.09);
-  --color-glass-key-muted: rgba(255, 255, 255, 0.055);
+  --color-glass-key:      rgba(255, 255, 255, 0.13);
+  --color-glass-key-muted: rgba(255, 255, 255, 0.08);
   --color-glass-border:   rgba(255, 255, 255, 0.10);
   --color-glass-shine:    rgba(255, 255, 255, 0.16);
 
@@ -44,11 +44,15 @@
   --blur-key:   blur(6px);
 
   /* Shadows */
-  --shadow-key:       0 2px 8px rgba(0,0,0,0.50),
-                      inset 0 1px 0 rgba(255,255,255,0.16),
-                      inset 0 -1px 0 rgba(0,0,0,0.28);
-  --shadow-key-press: 0 1px 3px rgba(0,0,0,0.55),
-                      inset 0 2px 5px rgba(0,0,0,0.42);
+  --shadow-key:       0 8px 20px rgba(0,0,0,0.60),
+                      0 3px 6px  rgba(0,0,0,0.40),
+                      inset 0 2px 1px rgba(255,255,255,0.72),
+                      inset 0 -2px 3px rgba(0,0,0,0.48),
+                      inset 1px 0 0 rgba(255,255,255,0.14),
+                      inset -1px 0 0 rgba(0,0,0,0.12);
+  --shadow-key-press: 0 2px 5px rgba(0,0,0,0.55),
+                      inset 0 3px 8px rgba(0,0,0,0.55),
+                      inset 0 1px 3px rgba(0,0,0,0.35);
   --shadow-panel:     0 12px 48px rgba(0,0,0,0.55),
                       0 2px 8px rgba(0,0,0,0.30);
 
@@ -57,10 +61,10 @@
   --font-stack-x:   2.8rem;
   --font-stack-y:   1.8rem;
   --font-stack-z:   1.25rem;
-  --font-key-digit: 1.25rem;
-  --font-key-op:    1.25rem;
-  --font-key-func:  0.85rem;
-  --font-key-enter: 1.2rem;
+  --font-key-digit: 1.9rem;
+  --font-key-op:    1.9rem;
+  --font-key-func:  1.2rem;
+  --font-key-enter: 1.75rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -75,11 +79,15 @@
     --color-text-secondary:  #4A4A50;
     --color-text-tertiary:   #6B6B77;
     --color-separator:       rgba(60, 60, 67, 0.10);
-    --shadow-key:       0 2px 8px rgba(0,0,0,0.10),
-                        inset 0 1px 0 rgba(255,255,255,0.95),
-                        inset 0 -1px 0 rgba(0,0,0,0.05);
-    --shadow-key-press: 0 1px 2px rgba(0,0,0,0.14),
-                        inset 0 2px 4px rgba(0,0,0,0.09);
+    --shadow-key:       0 6px 14px rgba(0,0,0,0.18),
+                        0 2px 4px  rgba(0,0,0,0.12),
+                        inset 0 2px 1px rgba(255,255,255,0.98),
+                        inset 0 -2px 3px rgba(0,0,0,0.14),
+                        inset 1px 0 0 rgba(255,255,255,0.50),
+                        inset -1px 0 0 rgba(0,0,0,0.05);
+    --shadow-key-press: 0 1px 3px rgba(0,0,0,0.18),
+                        inset 0 3px 7px rgba(0,0,0,0.16),
+                        inset 0 1px 3px rgba(0,0,0,0.10);
     --shadow-panel:     0 8px 32px rgba(0,0,0,0.10),
                         0 2px 8px rgba(0,0,0,0.06);
   }

@@ -25,6 +25,9 @@ none
 - [x] 3 ARIA violations fixed: landmark-one-main, aria-prohibited-attr, aria-hidden-focus (inert on drawer-body)
 
 ## M4 PROGRESS (Alpha — feature complete)
+- [x] Undo cap raised to 10,000 (effectively infinite); test updated
+- [x] Button font sizes increased: digit/op 1.9rem, func 1.2rem, enter 1.75rem; landscape updated proportionally
+- [x] Heavily embossed glassy button look: strong convex specular gradient, beveled border (bright top/dark bottom), deeper inset highlights + shadows; all key variants updated
 - [ ] All D-section acceptance criteria verified
 - [ ] No P0 bugs open; P1 bugs documented
 
