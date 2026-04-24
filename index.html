@@ -26,13 +26,16 @@
 
   <main id="app">
 
-    <!-- Zone 1: Stack Display -->
-    <section id="stack-display" aria-label="Stack display" aria-live="polite">
-      <div id="stack-rows"></div>
-    </section>
+    <header id="app-header">Stax</header>
 
-    <!-- Zone 2: Keypad -->
-    <section id="keypad" aria-label="Calculator keypad">
+    <div id="main-content">
+      <!-- Zone 1: Stack Display -->
+      <section id="stack-display" aria-label="Stack display" aria-live="polite">
+        <div id="stack-rows"></div>
+      </section>
+
+      <!-- Zone 2: Keypad -->
+      <section id="keypad" aria-label="Calculator keypad">
 
       <!-- Sig-digits slider row -->
       <div class="slider-row">
@@ -85,7 +88,8 @@
         <button class="key key--enter" data-key="enter" aria-label="Enter">ENTER</button>
       </div>
 
-    </section>
+      </section>
+    </div>
   </main>
 
   <!-- History drawer: handle always accessible; body inert when closed -->
