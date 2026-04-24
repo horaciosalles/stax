@@ -41,24 +41,11 @@
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-key);
-  transition:
-    transform 20ms ease-out,
-    box-shadow 20ms ease-out,
-    filter 20ms ease-out;
+  transition: filter 60ms ease-out;
   user-select: none;
 }
 
-.key:active {
-  transform: translateY(2px);
-  box-shadow: var(--shadow-key-press);
-  filter: brightness(0.80);
-  transition:
-    transform 15ms ease-out,
-    box-shadow 15ms ease-out,
-    filter 15ms ease-out;
-}
-
-.key:hover:not(:active) {
+.key:hover {
   filter: brightness(1.18);
 }
 

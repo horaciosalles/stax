@@ -2,6 +2,7 @@ import { vibrate } from './haptic.js';
 import { setError, clearError, renderStack } from './display.js';
 import { formatNumber } from '../engine/formatter.js';
 import { STRINGS } from '../strings.js';
+import { saveState } from '../persistence.js';
 
 let _engine = null;
 let _clrPending = false;
@@ -32,6 +33,7 @@ function handleResult(result) {
   } else {
     clearError();
     renderStack(_engine, { pushAnimation: true });
+    saveState(_engine);
   }
 }
 
@@ -60,6 +62,7 @@ function handleKey(key) {
   case 'enter':
     _engine.enter();
     renderStack(_engine, { pushAnimation: true });
+    saveState(_engine);
     vibrate(20);
     break;
 
@@ -88,6 +91,7 @@ function handleKey(key) {
       _engine.clr();
       clearError();
       renderStack(_engine);
+      saveState(_engine);
       vibrate([10, 50, 10]);
     } else {
       _clrPending = true;
@@ -103,25 +107,16 @@ function handleKey(key) {
 
   case 'undo': {
     const ok = _engine.undo();
-    if (!ok) {
-      // already dimmed; no-op
-    } else {
+    if (ok) {
       clearError();
       renderStack(_engine);
+      saveState(_engine);
     }
     vibrate(10);
-    _updateUndoState();
     break;
   }
 
   }
-
-  _updateUndoState();
-}
-
-function _updateUndoState() {
-  const btn = document.querySelector('[data-key="undo"]');
-  if (btn) btn.disabled = _engine.undoStack.length === 0;
 }
 
 function onKeydown(event) {
@@ -153,6 +148,9 @@ export function initKeypad(engine) {
 
   document.querySelectorAll('[data-key]').forEach(btn => {
     btn.addEventListener('pointerdown', () => {
+      btn.classList.remove('key--tap');
+      void btn.offsetWidth; // force reflow so the animation restarts every tap
+      btn.classList.add('key--tap');
       handleKey(btn.dataset.key);
       btn.blur();
     });
@@ -182,6 +180,5 @@ export function initKeypad(engine) {
     });
   }
 
-  _updateUndoState();
   renderStack(_engine);
 }

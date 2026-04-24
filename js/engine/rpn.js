@@ -258,6 +258,15 @@ export class RpnEngine {
     this.isInputting = false;
   }
 
+  // ── Recall ────────────────────────────────────────────────────────────────
+
+  /** Push a recalled value from history onto the stack (lifts any in-progress input first). */
+  recall(value) {
+    this._saveSnapshot();
+    this._autoLift();
+    this.stack.push(value);
+  }
+
   // ── Undo ──────────────────────────────────────────────────────────────────
 
   /** Restore engine to the state before the last stack-modifying action. */

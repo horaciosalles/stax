@@ -110,6 +110,22 @@
 
 .drawer-entry {
   padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: background-color 60ms ease;
+  border-radius: 8px;
+}
+
+.drawer-entry:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.drawer-entry:active {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+@media (prefers-color-scheme: light) {
+  .drawer-entry:hover  { background-color: rgba(0, 0, 0, 0.04); }
+  .drawer-entry:active { background-color: rgba(0, 0, 0, 0.09); }
 }
 
 .drawer-entry__expr {

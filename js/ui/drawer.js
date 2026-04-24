@@ -1,5 +1,7 @@
 import { formatNumber } from '../engine/formatter.js';
 import { STRINGS } from '../strings.js';
+import { renderStack } from './display.js';
+import { saveState } from '../persistence.js';
 
 let _engine = null;
 let _isOpen = false;
@@ -56,7 +58,10 @@ export function renderHistory(engine) {
   for (const entry of engine.historyLog) {
     const item = document.createElement('div');
     item.className = 'drawer-entry';
-    item.setAttribute('role', 'listitem');
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-label',
+      'Recall ' + formatNumber(entry.result, engine.sigDigits));
 
     const expr = document.createElement('div');
     expr.className = 'drawer-entry__expr';
@@ -71,6 +76,18 @@ export function renderHistory(engine) {
 
     item.appendChild(expr);
     item.appendChild(result);
+
+    const recall = () => {
+      engine.recall(entry.result);
+      renderStack(engine, { pushAnimation: true });
+      saveState(engine);
+      closeDrawer();
+    };
+    item.addEventListener('click', recall);
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); recall(); }
+    });
+
     list.appendChild(item);
 
     const sep = document.createElement('hr');

@@ -16,6 +16,17 @@
   100% { background-color: transparent; }
 }
 
+/* Each pointerdown re-triggers this via JS (remove class → reflow → add class) */
+@keyframes key-tap {
+  0%   { transform: translateY(0)   scale(1);    filter: brightness(1); }
+  30%  { transform: translateY(2px) scale(0.97); filter: brightness(0.76); }
+  100% { transform: translateY(0)   scale(1);    filter: brightness(1); }
+}
+
+.key--tap {
+  animation: key-tap 85ms ease-out;
+}
+
 .cursor {
   animation: cursor-blink 1.06s step-end infinite;
   color: var(--color-text-secondary);
@@ -43,6 +54,7 @@
 
   .stack-row--enter,
   .stack-value--error,
+  .key--tap,
   #drawer-handle {
     animation: none;
   }
