@@ -1,10 +1,38 @@
 # WORK LOG — Stax
 Current milestone: M6 — Gold
-Last session: 2026-04-22
-Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 COMPLETE ✓ | M6 (Gold) NEXT
+Last session: 2026-04-23
+Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 COMPLETE ✓ | M6 IN PROGRESS
 
 ## ACTIVE CHECKPOINT
-none
+M6 L.7 checklist — code-completable items done; manual items pending (Lighthouse, device, sign-off)
+
+## M6 PROGRESS (Gold — Ready to Ship)
+
+### L.7 Launch Certification Checklist
+- [x] ESLint: zero errors
+- [x] npm audit: zero high/critical vulnerabilities
+- [x] MIT LICENSE file added (root)
+- [x] robots.txt present (allow indexing)
+- [x] Service worker bumped to stax-v7 (cache bust after UX polish commit)
+- [x] manifest.json: name, short_name, icons (192, 512, maskable), orientation=any, display=standalone
+- [x] All user-facing strings in js/strings.js (dynamic strings); static HTML labels acceptable as markup
+- [x] env(safe-area-inset-bottom) applied (layout.css keypad padding)
+- [x] Zero P0/P1 bugs (6 UX bugs fixed this session: focus ring, haptics, scroll, animation, label overlap, copy hint)
+- [x] WCAG AA contrast verified (M3; no regressions)
+- [ ] Lighthouse ≥ 95 — requires live browser audit (last known: 100/100/96 from M3)
+- [ ] App installs to home screen (iOS Safari + Android Chrome) — manual device test
+- [ ] App works fully offline (airplane mode) — manual device test
+- [ ] All D-section acceptance criteria verified on device matrix — manual
+- [ ] Designer visual sign-off — manual
+- [ ] Client (project owner) sign-off — manual
+
+### UX polish (committed this session, 2026-04-23)
+- [x] Amber focus ring removed — btn.blur() after pointerdown
+- [x] Haptics disabled (vibrate no-op) — easy to re-enable later
+- [x] Display scroll fixed — flexbox overflow direction corrected; auto-scrolls to X register
+- [x] Button release animation 60ms → 20ms (near-instant)
+- [x] Stack labels padded past HIST handle (44px left padding)
+- [x] Copy hint ⎘ enlarged (0.6→1rem, opacity 0.45→0.65)
 
 ## M3 PROGRESS
 - [x] Liquid Glass redesign (gradient bg, glass surfaces, specular highlights)
@@ -57,6 +85,11 @@ M3 exit criteria (from blueprint §L.2 — "Vertical Slice"):
   Figma designs fully implemented ✓ | Lighthouse ≥ 90 pending | History drawer gesture ✓ | 0 P0/P1 bugs ✓
 
 ## SESSION HISTORY (last 5)
+2026-04-23 — M6 session. UX polish: focus ring (blur on pointerdown), haptics disabled,
+             display scroll fixed (flexbox overflow dir + auto-scroll), button animation
+             20ms, HIST label padding (44px), copy hint enlarged. ESLint fix (haptic.js
+             no-op param). LICENSE (MIT) added. SW bumped to stax-v7. WORK_LOG updated.
+             Commits: 5df520d (ux fixes), + M6 commit.
 2026-04-22 — M5 closure session. Dead strings removed (key.copy*, key.inv), stale
              .key--mem CSS reference removed, WORK_LOG synced. M5 formally closed;
              M6 (Gold) set as active milestone.
