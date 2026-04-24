@@ -42,9 +42,9 @@
   justify-content: center;
   box-shadow: var(--shadow-key);
   transition:
-    transform 60ms ease-out,
-    box-shadow 60ms ease-out,
-    filter 50ms ease-out;
+    transform 20ms ease-out,
+    box-shadow 20ms ease-out,
+    filter 20ms ease-out;
   user-select: none;
 }
 

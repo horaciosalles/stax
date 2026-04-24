@@ -74,4 +74,7 @@ export function renderStack(engine, { pushAnimation = false } = {}) {
 
     container.appendChild(div);
   }
+
+  const displayEl = container.parentElement;
+  if (displayEl) displayEl.scrollTop = displayEl.scrollHeight;
 }

@@ -152,7 +152,10 @@ export function initKeypad(engine) {
   document.addEventListener('keydown', onKeydown);
 
   document.querySelectorAll('[data-key]').forEach(btn => {
-    btn.addEventListener('pointerdown', () => handleKey(btn.dataset.key));
+    btn.addEventListener('pointerdown', () => {
+      handleKey(btn.dataset.key);
+      btn.blur();
+    });
   });
 
   // Tap the X register row to copy its value
