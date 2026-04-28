@@ -1,11 +1,107 @@
 # WORK LOG — Stax
-Current milestone: M6 — Gold — COMPLETE ✓
+Current milestone: Play Store publication — IN PROGRESS
 Last session: 2026-04-28
-Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 COMPLETE ✓ | M6 COMPLETE ✓
+Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 COMPLETE ✓ | M6 COMPLETE ✓ | Play Store: awaiting user Play Console action
 
-## ACTIVE CHECKPOINT
-M6 COMPLETE ✓ — All L.7 checklist items closed. Lighthouse 100/100/100/100 (localhost, 2026-04-28).
-Shipped to GitHub Pages. No open items.
+## ACTIVE CHECKPOINT — Play Store Publishing
+
+### What is done (2026-04-28 session)
+Everything below is committed/pushed to main. The signed AAB is ready to upload.
+
+**Infrastructure installed (local machine, not in repo):**
+- Java JDK 21 → `C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot`
+  Installed via: `winget install Microsoft.OpenJDK.21`
+- bubblewrap CLI v1.24.1 → `npm install -g @bubblewrap/cli`
+  Config at: `~/.bubblewrap/config.json`
+- Android SDK → `C:\Users\horac\.bubblewrap\android_sdk\`
+  Packages: build-tools;34.0.0, platform-tools, platforms;android-34
+  Licenses: pre-accepted (via `yes | sdkmanager --licenses`)
+
+**Secret files (gitignored — MUST NOT be lost):**
+- `android.keystore` — upload signing key (alias=stax)
+- `.keystore.secret` — password file (KEYSTORE_PASSWORD=t6IqfOMldWqNFqsuXDyS)
+- Upload key SHA-256: `CD:5D:54:90:66:80:E0:23:11:47:21:A5:1F:BF:61:AF:83:57:F8:6A:94:1C:AB:D5:59:1B:EB:BB:99:F8:B6:91`
+  NOTE: This is the UPLOAD key fingerprint. The Play App Signing key will be different.
+  ACTION REQUIRED: back up android.keystore somewhere safe outside the repo.
+
+**TWA Android project (in repo):**
+- Package ID: `io.github.horaciosalles.stax`
+- twa-manifest.json: source of truth for bubblewrap; minSdkVersion=21 (bumped from 19 — androidbrowserhelper 2.6.2 minimum)
+- app/ — Android app module (Java TWA wrapper, resources, icons)
+- gradlew / gradlew.bat — Gradle wrappers for local build
+- signingKey field in twa-manifest.json: path=android.keystore, alias=stax
+- fingerprints field: still has REPLACE_WITH_PLAY_APP_SIGNING_SHA256 placeholder → must be updated after Play Console step
+
+**Build output (gitignored, in project root after build):**
+- `app-release-signed.apk` — signed APK (~905 KB)
+- `app-release-bundle.aab` — signed AAB (~1 MB) — THIS is what goes to Play Console
+
+**Key files committed this session:**
+- `.well-known/assetlinks.json` — Digital Asset Links stub (placeholder SHA-256, deployed to GH Pages via CI)
+- `twa-manifest.json` — bubblewrap config
+- `scripts/build-twa.cjs` — fully automated non-interactive build script
+- `store_icon.png` — 512×512 Play Store icon (generated from PWA icon by bubblewrap)
+- `manifest-checksum.txt` — bubblewrap checksum (needed to skip project re-generation on next build)
+
+### How to rebuild the AAB (after SHA-256 is updated)
+```
+# From project root, with JAVA_HOME on PATH:
+node scripts/build-twa.cjs
+```
+The script reads the keystore password from `.keystore.secret` automatically.
+It uses bubblewrap's @bubblewrap/core API programmatically — bypasses all interactive TTY prompts.
+The gradle build runs via PowerShell (gradlew.bat) separately since bubblewrap's shell:true
+CWD handling doesn't work in Git Bash. So the full rebuild is two steps:
+1. `node scripts/build-twa.cjs` → generates/updates Android project
+2. From PowerShell: run `.\gradlew.bat assembleRelease bundleRelease`
+3. Sign with: apksigner (APK) and jarsigner (AAB) using the keystore
+
+Actually, step 2+3 may now be handled by the script IF the gradlew issue is fixed.
+If gradlew fails with "not recognized", use PowerShell directly:
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot"
+$env:ANDROID_HOME = "$env:USERPROFILE\.bubblewrap\android_sdk"
+$env:Path = "$env:JAVA_HOME\bin;$env:ANDROID_HOME\build-tools\34.0.0;$env:Path"
+.\gradlew.bat assembleRelease bundleRelease
+# Then sign manually (see commit e34b657 message for exact commands)
+```
+
+### Pending user actions before Claude can finish
+1. Google Play Developer account ($25 one-time if not registered)
+2. In Play Console: Create app → package `io.github.horaciosalles.stax`
+3. Internal Testing → Create release → upload `app-release-bundle.aab`
+4. Release → Setup → App signing → opt in to Play App Signing
+5. From App signing key certificate section: copy the SHA-256 fingerprint
+6. Give SHA-256 to Claude → Claude updates assetlinks.json + twa-manifest.json fingerprints,
+   commits, pushes (CI deploys updated assetlinks.json), and rebuilds final AAB
+
+### Pending Claude actions (after SHA-256 received)
+- Update `.well-known/assetlinks.json`: replace REPLACE_WITH_PLAY_APP_SIGNING_SHA256
+- Update `twa-manifest.json` fingerprints[0].value with real SHA-256
+- Rebuild AAB (steps above)
+- Commit and push (CI will deploy updated assetlinks.json to GH Pages)
+- Verify `https://horaciosalles.github.io/stax/.well-known/assetlinks.json` serves correctly
+
+### Store listing assets still needed
+- Feature graphic: 1024×500 px PNG (header banner for Play Store listing)
+- Phone screenshots: minimum 2, portrait preferred (matches the calculator's natural orientation)
+- Short description: max 80 chars
+- Full description: max 4000 chars
+- Privacy policy URL (required by Play Console — can be a simple page on GH Pages)
+- Content rating questionnaire (filled in Play Console directly)
+
+### Known issues / gotchas discovered this session
+- bubblewrap v1.24.1 uses `signingKey.path` / `signingKey.alias` (NOT `signing.keystore` / `signing.keyAlias`)
+  Old format silently produces undefined signingKey → build fails with "Cannot read properties of undefined"
+- androidbrowserhelper 2.6.2 requires minSdkVersion ≥ 21; bubblewrap default of 19 causes manifest merge failure
+- bubblewrap's `GradleWrapper` runs `gradlew.bat` with `shell: true` and a Unix-style CWD from Git Bash,
+  which cmd.exe can't resolve → "not recognized as internal or external command"
+  Workaround: run gradlew.bat directly from PowerShell (not Git Bash)
+- bubblewrap prompts use inquirer.js which requires a real TTY; piped stdin fails after first answer
+  Workaround: `scripts/build-twa.cjs` uses @bubblewrap/core programmatically with AutoPrompt class
+- BUBBLEWRAP_KEYSTORE_PASSWORD and BUBBLEWRAP_KEY_PASSWORD env vars bypass the password prompt
+- bubblewrap config at `~/.bubblewrap/config.json` caches jdkPath and androidSdkPath;
+  if androidSdkPath is empty, it prompts to download SDK; once set, skips the prompt
 
 ## M6 PROGRESS (Gold — Ready to Ship)
 
@@ -93,6 +189,22 @@ M3 exit criteria (from blueprint §L.2 — "Vertical Slice"):
   Figma designs fully implemented ✓ | Lighthouse ≥ 90 pending | History drawer gesture ✓ | 0 P0/P1 bugs ✓
 
 ## SESSION HISTORY (last 5)
+2026-04-28 — Play Store publishing session. Full TWA pipeline set up from scratch:
+             Java JDK 21 (winget), bubblewrap CLI, Android SDK (build-tools 34,
+             platform-tools, platform-34), keystore generated (android.keystore /
+             alias stax / password in .keystore.secret). Bypassed bubblewrap's
+             interactive TTY prompts by writing scripts/build-twa.cjs using
+             @bubblewrap/core API directly with AutoPrompt class. Fixed two build
+             errors: signingKey field format (signing.keystore → signingKey.path)
+             and minSdkVersion 19→21 (androidbrowserhelper 2.6.2 requirement).
+             Ran gradle via PowerShell, signed APK (apksigner) and AAB (jarsigner).
+             Output: app-release-signed.apk (905KB), app-release-bundle.aab (1MB).
+             Committed: Android project (app/, gradlew, build.gradle, etc.),
+             twa-manifest.json, .well-known/assetlinks.json, scripts/build-twa.cjs,
+             store_icon.png. Pushed. CI deployed assetlinks.json to GH Pages.
+             BLOCKING: need Play Console SHA-256 (Play App Signing) to finalize
+             assetlinks.json and issue production-ready AAB.
+             Commits: 0fb3a36 (twa scaffold), e34b657 (android project + build).
 2026-04-28 — M6 CLOSED. Lighthouse 100/100/100/100 (headless Chrome, localhost).
              WORK_LOG catch-up. Bug fix: persistence.js missing from SW cache
              manifest (offline would break); SW bumped stax-v7 → stax-v8.
@@ -141,4 +253,5 @@ Hosting: GitHub Pages (main branch via actions/deploy-pages). CI: GitHub Actions
 Orientation: portrait and landscape both supported (manifest orientation=any).
 
 ## BLOCKERS
-none
+- Play App Signing SHA-256 fingerprint needed from Play Console (user must upload AAB first)
+  Once obtained: update .well-known/assetlinks.json + twa-manifest.json fingerprints, commit, push, rebuild AAB
