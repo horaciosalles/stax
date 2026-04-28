@@ -1,10 +1,11 @@
 # WORK LOG — Stax
 Current milestone: M6 — Gold
-Last session: 2026-04-23
+Last session: 2026-04-28
 Status: M3 COMPLETE ✓ | M4 COMPLETE ✓ | M5 COMPLETE ✓ | M6 IN PROGRESS
 
 ## ACTIVE CHECKPOINT
-M6 L.7 checklist — code-completable items done; manual items pending (Lighthouse, device, sign-off)
+M6 L.7 checklist — all code-completable items done; manual items pending (Lighthouse, device, sign-off).
+SW bumped to stax-v8 (persistence.js added to cache manifest).
 
 ## M6 PROGRESS (Gold — Ready to Ship)
 
@@ -13,7 +14,7 @@ M6 L.7 checklist — code-completable items done; manual items pending (Lighthou
 - [x] npm audit: zero high/critical vulnerabilities
 - [x] MIT LICENSE file added (root)
 - [x] robots.txt present (allow indexing)
-- [x] Service worker bumped to stax-v7 (cache bust after UX polish commit)
+- [x] Service worker bumped to stax-v8 (persistence.js added to cache manifest)
 - [x] manifest.json: name, short_name, icons (192, 512, maskable), orientation=any, display=standalone
 - [x] All user-facing strings in js/strings.js (dynamic strings); static HTML labels acceptable as markup
 - [x] env(safe-area-inset-bottom) applied (layout.css keypad padding)
@@ -85,6 +86,16 @@ M3 exit criteria (from blueprint §L.2 — "Vertical Slice"):
   Figma designs fully implemented ✓ | Lighthouse ≥ 90 pending | History drawer gesture ✓ | 0 P0/P1 bugs ✓
 
 ## SESSION HISTORY (last 5)
+2026-04-28 — M6 session. WORK_LOG catch-up. Bug fix: persistence.js missing from SW
+             cache manifest (offline would break); SW bumped stax-v7 → stax-v8.
+             Commits: (this session)
+2026-04-24 — M6 session. Repeat button animations (JS @keyframes key-tap 85ms, force-
+             reflow so rapid taps each animate). localStorage persistence (js/persistence.js:
+             saveState/loadState via stax_v1 key; saves after enter/op/stack-op; restores
+             on boot incl. slider). UNDO button → 1/x (Ctrl+Z still undoes). engine.recall():
+             lift-to-input + push from HIST; HIST entries now clickable (recall + close drawer).
+             Tried top bar UI → reverted (visual clutter). 94/94 tests.
+             Commits: e344bc6 (feat), e353759 (top bar), b7dacd5 (revert top bar).
 2026-04-23 — M6 session. UX polish: focus ring (blur on pointerdown), haptics disabled,
              display scroll fixed (flexbox overflow dir + auto-scroll), button animation
              20ms, HIST label padding (44px), copy hint enlarged. ESLint fix (haptic.js

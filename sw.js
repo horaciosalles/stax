@@ -1,4 +1,4 @@
-const CACHE_NAME = 'stax-v7';
+const CACHE_NAME = 'stax-v8';
 
 const CACHE_MANIFEST = [
   './',
@@ -14,6 +14,7 @@ const CACHE_MANIFEST = [
   './css/animations.css',
   './js/main.js',
   './js/strings.js',
+  './js/persistence.js',
   './js/engine/rpn.js',
   './js/engine/formatter.js',
   './js/ui/display.js',
