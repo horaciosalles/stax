@@ -2,3 +2,15 @@ node_modules/
 coverage/
 .DS_Store
 Thumbs.db
+
+# Android / Play Store build artifacts
+android.keystore
+*.keystore
+.keystore.secret
+app/build/
+build/
+.gradle/
+local.properties
+*.idsig
+*.aab
+*.apk
