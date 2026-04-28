@@ -1,0 +1,39 @@
+{
+  "packageId": "io.github.horaciosalles.stax",
+  "host": "horaciosalles.github.io",
+  "startUrl": "/stax/",
+  "name": "Stax",
+  "launcherName": "Stax",
+  "display": "standalone",
+  "orientation": "default",
+  "themeColor": "#0B0B18",
+  "backgroundColor": "#0B0B18",
+  "navigationColor": "#0B0B18",
+  "navigationColorDark": "#0B0B18",
+  "navigationDividerColor": "#0B0B18",
+  "navigationDividerColorDark": "#0B0B18",
+  "enableNotifications": false,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://horaciosalles.github.io/stax/manifest.json",
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "enableSiteSettingsShortcut": true,
+  "minSdkVersion": 19,
+  "fingerprints": [
+    {
+      "name": "play-signing",
+      "value": "REPLACE_WITH_PLAY_APP_SIGNING_SHA256"
+    }
+  ],
+  "signing": {
+    "keystore": "android.keystore",
+    "keyAlias": "stax"
+  },
+  "appVersion": "1",
+  "appVersionName": "1.0.0",
+  "iconUrl": "https://horaciosalles.github.io/stax/assets/icons/icon-512.png",
+  "maskableIconUrl": "https://horaciosalles.github.io/stax/assets/icons/icon-maskable-512.png",
+  "monochromeIconUrl": "",
+  "splashScreenFadeOutDuration": 300
+}

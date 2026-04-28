@@ -1,8 +1,10 @@
 {
+  "id": "/stax/",
   "name": "Stax",
   "short_name": "Stax",
   "description": "The RPN calculator with taste.",
-  "start_url": "./",
+  "start_url": "/stax/",
+  "scope": "/stax/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#0B0B18",
